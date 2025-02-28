@@ -1,5 +1,6 @@
 import FollowUs from './FollowUs';
 import FooterLinks from './FooterLinks';
+import GoogleInfo from './GoogleInfo';
 
 export default function Footer() {
   return (
@@ -8,6 +9,7 @@ export default function Footer() {
       <hr className="border-muted-foreground" />
       <FooterLinks />
       <hr className="border-muted-foreground" />
+      <GoogleInfo />
     </footer>
   );
 }
