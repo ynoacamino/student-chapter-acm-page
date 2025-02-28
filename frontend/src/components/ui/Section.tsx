@@ -5,6 +5,6 @@ export default function Section({
   ...props
 }: React.ComponentProps<'section'>) {
   return (
-    <section className={cn('w-full max-w-7xl', className)} {...props} />
+    <section className={cn('w-full max-w-7xl px-6', className)} {...props} />
   );
 }
