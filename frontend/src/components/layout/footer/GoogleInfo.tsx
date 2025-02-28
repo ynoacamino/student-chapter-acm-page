@@ -10,7 +10,7 @@ export default function GoogleInfo() {
     <div className="flex gap-4 text-muted-foreground">
       {
         googleInfo.map(({ name, url }) => (
-          <a key={name} href={url} className="text-muted-foreground">{name}</a>
+          <a key={name} href={url}>{name}</a>
         ))
       }
     </div>
