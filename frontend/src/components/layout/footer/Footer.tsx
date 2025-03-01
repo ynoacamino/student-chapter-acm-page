@@ -4,12 +4,14 @@ import GoogleInfo from './GoogleInfo';
 
 export default function Footer() {
   return (
-    <footer className="w-full px-6 flex flex-col bg-primary py-6 gap-6 text-primary-foreground">
-      <FollowUs />
-      <hr className="border-muted-foreground" />
-      <FooterLinks />
-      <hr className="border-muted-foreground" />
-      <GoogleInfo />
+    <footer className="w-full bg-primary-dark flex items-start justify-center">
+      <div className="w-full max-w-7xl px-6 flex flex-col py-6 gap-6 text-primary-foreground">
+        <FollowUs />
+        <hr className="border-muted-foreground" />
+        <FooterLinks />
+        <hr className="border-muted-foreground" />
+        <GoogleInfo />
+      </div>
     </footer>
   );
 }

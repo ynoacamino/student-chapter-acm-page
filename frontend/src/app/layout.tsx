@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import ProgressBarProvider from '@/components/providers/ProgressBarProvider';
 import Footer from '@/components/layout/footer/Footer';
+import Header from '@/components/layout/header/Header';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -30,6 +31,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex flex-col items-center`}
       >
         <ProgressBarProvider>
+          <Header />
           {children}
           <Footer />
         </ProgressBarProvider>
