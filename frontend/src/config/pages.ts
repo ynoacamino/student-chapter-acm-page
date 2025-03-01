@@ -17,5 +17,10 @@ export const pagesConfig = {
       path: '/galeria',
       url: 'http://localhost:3000/galeria',
     },
+    {
+      name: 'Comites',
+      path: '/comites',
+      url: 'http://localhost:3000/comites',
+    },
   ],
 };
