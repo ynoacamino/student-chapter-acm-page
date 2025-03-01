@@ -18,7 +18,7 @@ const learnLinks = [
 
 export default function FooterLinks() {
   return (
-    <div className="flex">
+    <div className="flex flex-wrap gap-7">
       <ColumnLinks title="About" links={aboutLinks} />
       <ColumnLinks title="Learn More" links={learnLinks} />
       {/* I think that here the ACM logo is a good idea */}
