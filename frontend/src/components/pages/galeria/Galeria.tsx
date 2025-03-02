@@ -11,7 +11,7 @@ export default function Galeria() {
   } = useGallery();
 
   return (
-    <Section className="items-start">
+    <Section className="items-start mt-10">
       <Categories categories={categories} setCategory={setCategory} category={category} />
       <Photos photos={photos} />
     </Section>

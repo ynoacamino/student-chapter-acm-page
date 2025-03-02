@@ -7,7 +7,7 @@ export default function Title() {
         <span>
           Descubre
         </span>
-        <span>
+        <span className="flex gap-3 items-center">
           <span>
             Nuestra
           </span>
