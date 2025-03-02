@@ -19,14 +19,14 @@ export default function Categories({
   };
 
   return (
-    <div className="flex gap-6 mb-8">
+    <div className="flex gap-2 mb-8">
       {categories.map(({ name, id }) => (
         <Button
           key={id}
           onClick={() => handleCategory(id)}
           type="button"
           variant="ghost"
-          className={cn('px-5 py-3', {
+          className={cn('px-4 py-3', {
             'bg-primary text-background hover:bg-primary/90 hover:text-primary-foreground': category === id,
           })}
         >

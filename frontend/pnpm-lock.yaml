@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@appnest/masonry-layout':
+        specifier: ^2.2.3
+        version: 2.2.3
       '@bprogress/next':
         specifier: ^3.1.3
         version: 3.1.3(next@15.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
@@ -35,6 +38,9 @@ importers:
       next:
         specifier: 15.2.0
         version: 15.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      photoswipe:
+        specifier: ^5.4.4
+        version: 5.4.4
       react:
         specifier: ^19.0.0
         version: 19.0.0
@@ -96,6 +102,9 @@ packages:
   '@alloc/quick-lru@5.2.0':
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
+
+  '@appnest/masonry-layout@2.2.3':
+    resolution: {integrity: sha512-q4q48iygVyaFaaogu5xeYNHR5jj4yZMB4zC1JmfOggz7DPCp/QIJGbnLctf3y2maNtGz4PiLXrQRQlmx5hO57A==}
 
   '@bprogress/core@1.1.18':
     resolution: {integrity: sha512-+khsDSJ7jv1L9LU34jnEsNqY6tXViSZDOeoxd09Ws8zVXzFjatRzWwBpiDQqTqyVZc0nlOxkkumFDtAgDJwY2A==}
@@ -1675,6 +1684,10 @@ packages:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
 
+  photoswipe@5.4.4:
+    resolution: {integrity: sha512-WNFHoKrkZNnvFFhbHL93WDkW3ifwVOXSW3w1UuZZelSmgXpIGiZSNlZJq37rR8YejqME2rHs9EhH9ZvlvFH2NA==}
+    engines: {node: '>= 0.12.0'}
+
   picocolors@1.1.1:
     resolution: {integrity: sha512-xceH2snhtb5M9liqDsmEw56le376mTZkEX/jEb/RxNFyegNul7eNslCXP9FDj/Lcu0X8KEyMceP2ntpaHrDEVA==}
 
@@ -2097,6 +2110,8 @@ packages:
 snapshots:
 
   '@alloc/quick-lru@5.2.0': {}
+
+  '@appnest/masonry-layout@2.2.3': {}
 
   '@bprogress/core@1.1.18': {}
 
@@ -3781,6 +3796,8 @@ snapshots:
       minipass: 7.1.2
 
   path-type@4.0.0: {}
+
+  photoswipe@5.4.4: {}
 
   picocolors@1.1.1: {}
 

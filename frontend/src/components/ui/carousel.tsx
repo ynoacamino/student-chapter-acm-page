@@ -1,3 +1,7 @@
+/* eslint-disable @typescript-eslint/no-shadow */
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable consistent-return */
+
 'use client';
 
 import * as React from 'react';

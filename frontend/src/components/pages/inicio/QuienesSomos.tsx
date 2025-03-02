@@ -11,7 +11,7 @@ export default function QuienesSomos() {
         <h3 className="text-2xl font-semibold">
           Astro is a JavaScript web framework optimized for building fast, content-driven websites.
         </h3>
-        <div className="flex gap-12">
+        <div className="flex flex-col md:flex-row gap-12">
           <div className="flex flex-col gap-8 w-full">
             <p>
               It is a long established fact that a reader will be distracted by the readable content

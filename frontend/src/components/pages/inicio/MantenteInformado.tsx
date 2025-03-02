@@ -12,10 +12,10 @@ export default function MantenteInformado() {
         <span className="text-primary-foreground text-lg text-center md:w-[60%] px-3">
           Suscríbete para recibir las últimas novedades y actualizaciones sobre nuestros eventos.
         </span>
-        <div className="bg-primary-foreground rounded-lg px-2 py-2 flex gap-2 mt-10  items-center ">
+        <div className="bg-primary-foreground rounded-lg px-2 py-2 flex gap-2 mt-10 items-center w-full max-w-xl">
           <Input
             type="email"
-            className="rounded-md h-11 w-86"
+            className="rounded-md h-11 w-full"
             placeholder="Correo electronico"
           />
           <Button
