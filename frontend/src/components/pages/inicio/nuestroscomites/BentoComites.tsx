@@ -7,7 +7,7 @@ import Comite6 from './Comite6';
 
 export default function BentoComites() {
   return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(300px,_1fr))] grid-flow-row grid-rows-[repeat(auto-fill,1fr)] gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 grid-rows-[repeat(auto-fill,1fr)] gap-5">
       <Comite1 />
       <Comite2 />
       <Comite3 />
