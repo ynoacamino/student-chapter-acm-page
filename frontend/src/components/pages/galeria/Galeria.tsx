@@ -16,7 +16,6 @@ export default function Galeria() {
   return (
     <Section className="items-start mt-10" id={GALLERY_ID}>
       <Categories categories={categories} setCategory={setCategory} category={category} />
-      {/* <Photos photos={photos} /> */}
       {
         isLoading ? (
           <PhotosSkeleton />
