@@ -9,7 +9,7 @@ export default function ColumnLinks({
   title, links,
 }: ColumnLinksProps) {
   return (
-    <div className="flex flex-col gap-2 grow basis-24">
+    <div className="flex flex-col gap-2 grow basis-36">
       <span className="font-medium">{ title }</span>
       {
         links.map(({ name, url }) => (

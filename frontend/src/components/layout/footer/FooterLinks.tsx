@@ -1,3 +1,5 @@
+import ACMLogo from '@/components/logos/ACMLogo';
+import Link from 'next/link';
 import ColumnLinks from './ColumnLinks';
 
 const aboutLinks = [
@@ -22,6 +24,9 @@ export default function FooterLinks() {
       <ColumnLinks title="About" links={aboutLinks} />
       <ColumnLinks title="Learn More" links={learnLinks} />
       {/* I think that here the ACM logo is a good idea */}
+      <Link href="https://acm.org" className="flex justify-center basis-36 max-h-60 grow">
+        <ACMLogo />
+      </Link>
     </div>
   );
 }
