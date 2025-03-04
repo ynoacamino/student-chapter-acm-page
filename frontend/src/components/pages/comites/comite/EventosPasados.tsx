@@ -48,9 +48,9 @@ export default function EventosPasados() {
               <AutoCarouselItem key={title}>
                 <div className="flex flex-col items-center px-4 py-5 sm:p-6 gap-y-10">
                   <div className="flex flex-col gap-2">
-                    <p className="text-2xl font-semibold text-gray-900 text-center">
+                    <h3 className="text-2xl font-semibold text-gray-900 text-center">
                       {title}
-                    </p>
+                    </h3>
                     <p className="text-sm text-gray-600 px-2 ">{description}</p>
                   </div>
                   <div className="flex items-center justify-center h-64 my-auto">

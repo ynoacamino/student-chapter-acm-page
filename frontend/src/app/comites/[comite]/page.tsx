@@ -4,6 +4,8 @@ import Sections from '@/components/pages/comites/[comite]/Sections';
 import { COMITES_ROUTES } from '@/lib/comites_routes';
 import { COMITES_DICT } from '@/lib/mock';
 import { ComiteRoute } from '@/types/comite';
+import EventosPasados from '@/components/pages/comites/comite/EventosPasados';
+import ProximosEventos from '@/components/pages/comites/comite/ProximosEventos';
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
@@ -29,6 +31,8 @@ export default async function Page({
       <Hero title={comite.title} img={comite.img} />
       <Sections content={comite.sections} />
       <Members content={comite.members} />
+      <ProximosEventos />
+      <EventosPasados />
     </>
   );
 }
