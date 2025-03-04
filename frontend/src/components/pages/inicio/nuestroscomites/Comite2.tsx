@@ -21,6 +21,7 @@ export default function Comite2() {
     <Comite
       title="Comité de Desarrollo Web 2"
       className="row-start-2 sm:row-start-1 sm:col-start-2 pb-0"
+      path="comite_2"
     >
       Universidad Nacional de San Agustin
       de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
