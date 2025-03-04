@@ -1,5 +1,11 @@
+'use client';
+
 import Title from '@/components/pages/conocenos/Title';
 import Vision from '@/components/pages/conocenos/SectionAnimationScroll';
+import dynamic from 'next/dynamic';
+import JuntosParaLograrlo from '@/components/pages/conocenos/JuntosParaLograrlo';
+
+const SomosUnEquipo = dynamic(() => import('@/components/pages/conocenos/SomosUnEquipo'), { ssr: false });
 
 const DATA_SECTIONS = [
   {
@@ -63,6 +69,8 @@ export default function Page() {
           />
         ))
       }
+      <SomosUnEquipo />
+      <JuntosParaLograrlo />
     </>
   );
 }
