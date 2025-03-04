@@ -1,4 +1,4 @@
-import { COMITES_ROUTES } from '@/lib/mock';
+import { COMITES_ROUTES } from '@/lib/comites_routes';
 
 export interface BaseMember {
   name: string;

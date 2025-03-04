@@ -1,8 +1,6 @@
-export const COMITES_ROUTES = [
-  'comite_1', 'comite_2', 'comite_3', 'comite_4', 'comite_5', 'comite_6',
-] as const;
+import { Comite } from "@/types/comite";
 
-export const COMITES_DICT = {
+export const COMITES_DICT: { [key: string]: Comite } = {
   COMITE_1: {
     route: 'comite_1',
     title: 'Desarrollo Web',
