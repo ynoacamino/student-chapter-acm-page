@@ -14,7 +14,7 @@ export default function SectionAnimationScroll(
   return (
     <Section className={cn('h-[80vh] flex items-center justify-center my-28', {
       'mt-96': initial,
-      'mb-[40rem]': last,
+      'mb-[34rem]': last,
     })}
     >
       <motion.div
@@ -22,16 +22,18 @@ export default function SectionAnimationScroll(
         whileInView={{ opacity: 1 }}
       >
         <div
-          className={cn('w-full grid md:grid-cols-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-7xl')}
+          className={cn('w-full grid md:grid-cols-2 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-7xl px-6 gap-y-8')}
         >
           <img
             src={image}
             alt="mock"
-            className="w-full max-w-lg"
+            className="w-full max-w-sm md:max-w-lg justify-self-center"
           />
-          <div className="flex flex-col justify-center items-center max-w-xl gap-6">
-            <h2 className="text-2xl font-semibold mb-2">{title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: content }} className="gap-6 flex flex-col" />
+          <div
+            className="flex flex-col justify-center items-center w-full md:max-w-xl gap-6"
+          >
+            <h2 className="text-2xl font-semibold mb-2 text-center">{title}</h2>
+            <div dangerouslySetInnerHTML={{ __html: content }} className="gap-6 flex flex-col text-center" />
           </div>
         </div>
       </motion.div>
