@@ -1,35 +1,29 @@
+import Hero from '@/components/pages/comites/[comite]/Hero';
+import { COMITES_DICT, COMITES_ROUTES } from '@/lib/mock';
+import { ComiteRoute } from '@/types/comite';
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
 
-const COMITES_DICT = {
-  COMITE_1: 'comite_1',
-  COMITE_2: 'comite_2',
-  COMITE_3: 'comite_3',
-  COMITE_4: 'comite_4',
-  COMITE_5: 'comite_5',
-  COMITE_6: 'comite_6',
-} as const;
-
-type Comite = typeof COMITES_DICT[keyof typeof COMITES_DICT];
-
 export function generateStaticParams() {
-  return Object.values(COMITES_DICT).map((value) => ({ comite: value }));
+  return COMITES_ROUTES.map((route) => ({ comite: route }));
 }
 
 export default async function Page({
   params,
 }: {
-  params: Promise<{ comite: Comite }>
+  params: Promise<{ comite: ComiteRoute }>
 }) {
-  const { comite } = await params;
-  if (!comite) {
+  const { comite: comiteRoute } = await params;
+  if (!comiteRoute) {
     notFound();
   }
+  // eslint-disable-next-line max-len
+  const comite = Object.values(COMITES_DICT).find((tComite) => tComite.route === comiteRoute) || COMITES_DICT.COMITE_1;
   return (
-    <h1>
+    <>
+      <Hero title={comite.title} img={comite.img} />
       xd
-      {comite}
-    </h1>
+    </>
   );
 }
