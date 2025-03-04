@@ -1,19 +1,17 @@
-import { Comite } from '@/types/comite';
-
 export const COMITES_ROUTES = [
   'comite_1', 'comite_2', 'comite_3', 'comite_4', 'comite_5', 'comite_6',
 ] as const;
 
-export const COMITES_DICT: { [key: string]: Comite } = {
+export const COMITES_DICT = {
   COMITE_1: {
     route: 'comite_1',
     title: 'Desarrollo Web',
     description: 'Universidad Nacional de San Agustin de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.',
-    img: 'mock.png',
+    img: '/comites/mock.png',
     sections: [
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -21,7 +19,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
       },
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -173,11 +171,11 @@ export const COMITES_DICT: { [key: string]: Comite } = {
     route: 'comite_2',
     title: 'Desarrollo Web',
     description: 'Universidad Nacional de San Agustin de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.',
-    img: 'mock.png',
+    img: '/comites/mock.png',
     sections: [
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -185,7 +183,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
       },
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -337,11 +335,11 @@ export const COMITES_DICT: { [key: string]: Comite } = {
     route: 'comite_3',
     title: 'Desarrollo Web',
     description: 'Universidad Nacional de San Agustin de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.',
-    img: 'mock.png',
+    img: '/comites/mock.png',
     sections: [
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -349,7 +347,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
       },
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -501,11 +499,11 @@ export const COMITES_DICT: { [key: string]: Comite } = {
     route: 'comite_4',
     title: 'Desarrollo Web',
     description: 'Universidad Nacional de San Agustin de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.',
-    img: 'mock.png',
+    img: '/comites/mock.png',
     sections: [
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -513,7 +511,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
       },
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -665,11 +663,11 @@ export const COMITES_DICT: { [key: string]: Comite } = {
     route: 'comite_5',
     title: 'Desarrollo Web',
     description: 'Universidad Nacional de San Agustin de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.',
-    img: 'mock.png',
+    img: '/comites/mock.png',
     sections: [
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -677,7 +675,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
       },
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -829,11 +827,11 @@ export const COMITES_DICT: { [key: string]: Comite } = {
     route: 'comite_6',
     title: 'Desarrollo Web',
     description: 'Universidad Nacional de San Agustin de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.',
-    img: 'mock.png',
+    img: '/comites/mock.png',
     sections: [
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
@@ -841,7 +839,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
       },
       {
         title: 'Astro is a Javascript web framework',
-        img: 'game.png',
+        img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',
