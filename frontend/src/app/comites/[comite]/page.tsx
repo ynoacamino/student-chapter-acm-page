@@ -1,3 +1,5 @@
+import EventosPasados from '@/components/pages/comites/comite/EventosPasados';
+import ProximosEventos from '@/components/pages/comites/comite/ProximosEventos';
 import { notFound } from 'next/navigation';
 
 export const dynamicParams = false;
@@ -27,9 +29,9 @@ export default async function Page({
     notFound();
   }
   return (
-    <h1>
-      xd
-      {comite}
-    </h1>
+    <>
+      <ProximosEventos />
+      <EventosPasados />
+    </>
   );
 }
