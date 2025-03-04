@@ -1,6 +1,8 @@
 import Hero from '@/components/pages/comites/[comite]/Hero';
+import Members from '@/components/pages/comites/[comite]/Members';
 import Sections from '@/components/pages/comites/[comite]/Sections';
-import { COMITES_DICT, COMITES_ROUTES } from '@/lib/mock';
+import { COMITES_ROUTES } from '@/lib/comites_routes';
+import { COMITES_DICT } from '@/lib/mock';
 import { ComiteRoute } from '@/types/comite';
 import { notFound } from 'next/navigation';
 
@@ -26,6 +28,7 @@ export default async function Page({
     <>
       <Hero title={comite.title} img={comite.img} />
       <Sections content={comite.sections} />
+      <Members content={comite.members} />
     </>
   );
 }
