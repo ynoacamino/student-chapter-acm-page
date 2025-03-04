@@ -1,16 +1,21 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface ComiteCardProps {
   title: string;
   content: string;
   img: string;
+  path: string;
 }
 
 export default function ComiteCard({
-  title, content, img,
+  title, content, img, path,
 }: ComiteCardProps) {
   return (
-    <article className="flex flex-col gap-6 border-muted border-2 rounded-xl p-6">
+    <Link
+      href={`/comites/${path}`}
+      className="flex flex-col gap-6 border-muted border-2 rounded-xl p-6 hover:scale-105 transition-transform"
+    >
       <Image src={`/comites/${img}`} alt={img} width={0} height={0} className="w-full" />
       <h2 className="text-xl font-semibold">
         {title}
@@ -18,6 +23,6 @@ export default function ComiteCard({
       <p className="">
         {content}
       </p>
-    </article>
+    </Link>
   );
 }
