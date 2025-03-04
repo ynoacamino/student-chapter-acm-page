@@ -11,7 +11,7 @@ export default function Hero({
   title, img,
 }: HeroProps) {
   return (
-    <Section className="flex-row justify-between gap-36">
+    <Section className="md:flex-row justify-between gap-x-36 gap-y-20">
       <div className="flex flex-col gap-8">
         <Title content={title} />
         <span className="text-2xl">

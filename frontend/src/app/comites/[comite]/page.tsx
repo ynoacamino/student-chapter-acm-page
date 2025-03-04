@@ -18,8 +18,9 @@ export default async function Page({
   if (!comiteRoute) {
     notFound();
   }
-  // eslint-disable-next-line max-len
-  const comite = Object.values(COMITES_DICT).find((tComite) => tComite.route === comiteRoute) || COMITES_DICT.COMITE_1;
+  const comite = Object.values(COMITES_DICT).find(
+    (tComite) => tComite.route === comiteRoute,
+  ) || COMITES_DICT.COMITE_1;
   return (
     <>
       <Hero title={comite.title} img={comite.img} />
