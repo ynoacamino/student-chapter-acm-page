@@ -21,17 +21,15 @@ export default function Members({
       </h3>
       <div className="flex flex-wrap gap-16 justify-center">
         {
-          groups.directive?.map(({
-            name, img, links, role, position,
-          }, index) => (
-            role === 'directive' && (
+          groups.directive?.map((directive, index) => (
+            directive.role === 'directive' && (
               <MemberCard
                 // eslint-disable-next-line react/no-array-index-key
-                key={`${name}-${index}-${role}`}
-                title={name}
-                img={img}
-                links={links}
-                role={position}
+                key={`${directive.name}-${index}-${directive.role}`}
+                title={directive.name}
+                img={directive.img}
+                links={directive.links}
+                role={directive.position}
               />
             )
           ))
