@@ -1,4 +1,4 @@
-import { COMITES_ROUTES } from '@/lib/mock'
+import { COMITES_ROUTES } from '@/lib/mock';
 
 export interface BaseMember {
   name: string;
@@ -27,10 +27,7 @@ export interface Volunteer extends BaseMember {
 export interface Event {
   date: string;
   name: string;
-  description: {
-    short: string;
-    large: string;
-  }
+  description: string;
 }
 
 export type ComiteMember = Member | Directive | Volunteer;
@@ -42,7 +39,7 @@ export interface Comite {
   title: string;
   description: string;
   img: string;
-  sections: Array<{ title: string, description: Array<string> }>;
+  sections: Array<{ title: string, img: string; description: Array<string> }>;
   members: Array<ComiteMember>;
   events: {
     past: Array<Event>
