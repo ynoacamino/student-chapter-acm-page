@@ -3,7 +3,7 @@ name: Build and Publish Docker Image
 on:
   push:
     tags:
-      - "panel@v*"
+      - "panel-v*"
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
