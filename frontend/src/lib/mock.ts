@@ -180,7 +180,7 @@ export const COMITES_DICT: { [key: string]: Comite } = {
         ],
       },
       {
-        title: 'Astro is a Javascript web framework',
+        title: 'Astro is a Javascript web framework 2',
         img: '/comites/game.png',
         description: [
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum',

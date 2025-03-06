@@ -1,4 +1,5 @@
 import Section from '@/components/ui/Section';
+import SectionAnimated from '@/components/ui/SectionAnimated';
 import Image from 'next/image';
 
 interface SectionsProps {
@@ -9,10 +10,10 @@ export default function Sections({
   content,
 }: SectionsProps) {
   return (
-    <Section className="gap-32">
+    <Section className="gap-32 mt-[40rem] mb-[45rem]">
       {
         content.map(({ title, img, description }, index) => (
-          <article
+          <SectionAnimated
             // eslint-disable-next-line react/no-array-index-key
             key={`${title}-${index}`}
             className="flex gap-14"
@@ -35,7 +36,7 @@ export default function Sections({
                 ))
               }
             </div>
-          </article>
+          </SectionAnimated>
         ))
       }
     </Section>
