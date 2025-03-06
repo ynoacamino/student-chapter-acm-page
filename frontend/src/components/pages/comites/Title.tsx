@@ -7,7 +7,7 @@ export default function Title() {
         <span className="flex justify-center">
           Conoce
         </span>
-        <span className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-x-3">
+        <span className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-y-4 gap-x-3">
           <span>
             Nuestros
           </span>
@@ -16,7 +16,6 @@ export default function Title() {
           </span>
         </span>
       </h1>
-
     </Section>
   );
 }
