@@ -1,6 +1,6 @@
-import Hero from '@/components/pages/comites/[comite]/Hero';
-import Members from '@/components/pages/comites/[comite]/Members';
-import Sections from '@/components/pages/comites/[comite]/Sections';
+import Hero from '@/components/pages/comites/comite/Hero';
+import Members from '@/components/pages/comites/comite/Members';
+import Sections from '@/components/pages/comites/comite/Sections';
 import { COMITES_ROUTES } from '@/lib/comites_routes';
 import { COMITES_DICT } from '@/lib/mock';
 import { ComiteRoute } from '@/types/comite';

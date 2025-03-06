@@ -1,4 +1,4 @@
-import { Comite } from "@/types/comite";
+import { Comite } from '@/types/comite';
 
 export const COMITES_DICT: { [key: string]: Comite } = {
   COMITE_1: {

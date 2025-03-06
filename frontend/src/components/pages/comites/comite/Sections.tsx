@@ -13,6 +13,7 @@ export default function Sections({
       {
         content.map(({ title, img, description }, index) => (
           <article
+            // eslint-disable-next-line react/no-array-index-key
             key={`${title}-${index}`}
             className="flex gap-14"
           >
@@ -20,11 +21,14 @@ export default function Sections({
             <div className="flex flex-col justify-center gap-4">
               <h3
                 className="font-semibold text-3xl"
-              >{title}</h3>
+              >
+                {title}
+              </h3>
               {
-                description.map((value, index) => (
+                description.map((value, descriptionIndex) => (
                   <p
-                    key={`${value.substring(0, 10)}-${index}`}
+                    // eslint-disable-next-line react/no-array-index-key
+                    key={`${value.substring(0, 10)}-${descriptionIndex}`}
                   >
                     {value}
                   </p>
