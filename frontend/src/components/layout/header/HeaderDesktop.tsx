@@ -13,8 +13,8 @@ export default function HeaderDesktop({
         {pagesConfig.pages.map((pagina) => (
           <li
             key={pagina.path}
-            className={cn('pt-3 pb-3', {
-              'bg-primary text-background rounded-b-sm': (path.includes(pagina.path) && pagina.path !== '/') || path === pagina.path,
+            className={cn('pt-3 pb-3 hover:bg-muted rounded-b-sm', {
+              'bg-primary text-background hover:bg-primary hover:contrast-125 hover:saturate-150': (path.includes(pagina.path) && pagina.path !== '/') || path === pagina.path,
             })}
           >
             <Link
