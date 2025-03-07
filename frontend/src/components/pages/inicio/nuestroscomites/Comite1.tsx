@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import Comite from './Comite';
+import Comite, { ComiteProps } from './Comite';
 
 function Graphic({ className }: { className?: string }) {
   return (
@@ -13,15 +13,16 @@ function Graphic({ className }: { className?: string }) {
   );
 }
 
-export default function Comite1() {
+export default function Comite1({
+  title, path, children,
+}: Omit<ComiteProps, 'className'>) {
   return (
     <Comite
-      title="Comité de Desarrollo Web 1"
+      title={title}
       className="row-start-1 xl:row-span-2"
-      path="comite_1"
+      path={path}
     >
-      Universidad Nacional de San Agustin
-      de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
+      {children}
       <div className="relative mx-auto mt-auto">
         <Graphic />
         <Graphic className="absolute inset-0 blur-[30px]" />

@@ -1,5 +1,5 @@
 import { cn } from '@/lib/utils';
-import Comite from './Comite';
+import Comite, { ComiteProps } from './Comite';
 
 function Graphic({ className }: { className?: string }) {
   return (
@@ -19,15 +19,16 @@ function Graphic({ className }: { className?: string }) {
   );
 }
 
-export default function Comite4() {
+export default function Comite4({
+  title, path, children,
+}: Omit<ComiteProps, 'className'>) {
   return (
     <Comite
-      title="Comité de Desarrollo Web 4"
+      title={title}
       className="row-start-4 sm:row-start-3 xl:row-start-2 xl:col-start-2 xl:col-span-3 pb-0 pr-0"
-      path="comite_4"
+      path={path}
     >
-      Universidad Nacional de San Agustin
-      de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
+      {children}
       <div className="relative">
         <Graphic />
         <Graphic className="absolute right-0 bottom-0 blur-[30px]" />

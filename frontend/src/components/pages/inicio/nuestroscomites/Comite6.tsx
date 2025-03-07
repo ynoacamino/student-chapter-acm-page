@@ -1,14 +1,15 @@
-import Comite from './Comite';
+import Comite, { ComiteProps } from './Comite';
 
-export default function Comite6() {
+export default function Comite6({
+  title, path, children,
+}: Omit<ComiteProps, 'className'>) {
   return (
     <Comite
-      title="Comité de Desarrollo Web 6"
+      title={title}
       className="row-start-6 sm:row-start-4 sm:col-span-2 xl:row-start-3"
-      path="comite_6"
+      path={path}
     >
-      Universidad Nacional de San Agustin
-      de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
+      {children}
     </Comite>
   );
 }

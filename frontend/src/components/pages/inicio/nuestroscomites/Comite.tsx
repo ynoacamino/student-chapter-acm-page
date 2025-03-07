@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 
-interface ComiteProps {
+export interface ComiteProps {
   title: string;
   className?: string;
   path: string;
