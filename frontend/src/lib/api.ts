@@ -4,6 +4,10 @@ import { Collections } from '@/types/collections';
 import { Member } from '@/types/members';
 import { Committee, CommitteesFields } from '@/types/committees';
 import { convertToRoute } from './utils';
+import { Event } from '@/types/events';
+import { Image } from '@/types/images';
+import { slugify } from '@/lib/utils';
+import { Section, SectionsFields } from '@/types/sections';
 
 export class PocketBaseAPI {
   pb: PocketBase;
@@ -14,7 +18,9 @@ export class PocketBaseAPI {
   }
 
   async getMembers() {
-    const result = await this.pb.collection(Collections.MEMBERS).getFullList();
+    const result = await this.pb.collection(Collections.MEMBERS).getFullList({
+      expand: 'image',
+    });
 
     return result as Member[];
   }
@@ -36,46 +42,87 @@ export class PocketBaseAPI {
     });
     return result.map((comittee) => convertToRoute(comittee[CommitteesFields.NAME]));
   }
+  
+  async getCommittees() {
+    const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
+      expand: 'image',
+    });
 
-  // async getInstitutions() {
-  //   try {
-  //     const result = await this.pb.collection('institutions').getFullList({
-  //       sort: '-name',
-  //     });
+    return result as Committee[];
+  }
 
-  //     return result;
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw new Error('Error al obtener las instituciones');
-  //   }
-  // }
+  async getPastEvents() {
+    const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
+      filter: 'date < @now',
+      sort: '-date',
+      expand: 'image',
+    });
 
-  // async getDegrees() {
-  //   try {
-  //     const result = await this.pb.collection('degrees').getFullList({
-  //       sort: '-name',
-  //     });
+    return result.items as Event[];
+  }
 
-  //     return result;
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw new Error('Error al obtener los grados academicos');
-  //   }
-  // }
+  async getUpcomingEvents() {
+    const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
+      filter: 'date >= @now',
+      sort: 'date',
+      expand: 'image',
+    });
 
-  // async getCommentsById(id: string) {
-  //   try {
-  //     const result = await this.pb.collection('comments').getFullList({
-  //       filter: `course="${id}"`,
-  //       expand: 'user',
-  //       requestKey: 'commentsApi',
-  //     });
-  //     return result as Comments[];
-  //   } catch (error) {
-  //     console.error(error);
-  //     throw new Error('Error al obtener los cometarios');
-  //   }
-  // }
+    return result.items as Event[];
+  }
+
+  async getFullImages() {
+    const result = await this.pb.collection(Collections.IMAGES).getFullList();
+
+    return result as Image[];
+  }
+
+  async getMemberByCommittee({ committeeId }: { committeeId: string }) {
+    const result = await this.pb.collection(Collections.MEMBERS).getFullList({
+      filter: `committee="${committeeId}"`,
+      expand: 'image',
+    });
+
+    return result as Member[];
+  }
+
+  async getPastEventsByCommittee({ committeeId }: { committeeId: string }) {
+    const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
+      filter: `committee="${committeeId}" AND date < @now`,
+      sort: '-date',
+      expand: 'image',
+    });
+
+    return result.items as Event[];
+  }
+
+  async getUpcomingEventsByCommittee({ committeeId }: { committeeId: string }) {
+    const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
+      filter: `committee="${committeeId}" AND date >= @now`,
+      sort: 'date',
+      expand: 'image',
+    });
+
+    return result.items as Event[];
+  }
+
+  async getCommitteeBySlug({ slug }: { slug: string }) {
+    const committees = await this.getCommittees();
+
+    return committees
+      .find((committee) => slugify(committee[CommitteesFields.NAME]) === slug) as Committee;
+  }
+
+  async getSectionsByCommittee({ committeeId }: { committeeId: string }) {
+    const result = await this.pb.collection(Collections.SECTIONS).getFullList({
+      filter: `committee="${committeeId}"`,
+      sort: `${SectionsFields.RELEVANCE}`,
+      expand: 'image',
+    });
+
+    return result as Section[];
+  }
+  
 }
 
 const api = new PocketBaseAPI();

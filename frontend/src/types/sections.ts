@@ -19,7 +19,7 @@ export interface Section extends RecordModel {
   [SectionsFields.COMMITTEE]: string;
   [SectionsFields.IMAGE]: string;
 
-  expand?: {
+  expand: {
     [SectionsFields.IMAGE]: Image;
     [SectionsFields.COMMITTEE]: Committee;
   };
