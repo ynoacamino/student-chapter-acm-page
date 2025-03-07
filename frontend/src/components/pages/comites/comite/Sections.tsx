@@ -1,40 +1,27 @@
 import Section from '@/components/ui/Section';
 import SectionAnimated from '@/components/ui/SectionAnimated';
-import Image from 'next/image';
-
-interface SectionsProps {
-  content: Array<{ title: string, img: string, description: Array<string> }>
-}
+import { getOriginalUrl } from '@/lib/utils';
+import { Section as SectionType } from '@/types/sections';
 
 export default function Sections({
   content,
-}: SectionsProps) {
+}: { content: SectionType[] }) {
   return (
     <Section className="gap-32 mt-[40rem] mb-[45rem]">
       {
-        content.map(({ title, img, description }, index) => (
+        content.map((section) => (
           <SectionAnimated
-            // eslint-disable-next-line react/no-array-index-key
-            key={`${title}-${index}`}
+            key={section.id}
             className="flex gap-14"
           >
-            <Image src={img} alt={img} width={0} height={0} className="grow w-full" />
+            <img src={getOriginalUrl(section)} alt={section.title} width={0} height={0} className="grow w-full" />
             <div className="flex flex-col justify-center gap-4">
               <h3
                 className="font-semibold text-3xl"
               >
-                {title}
+                {section.title}
               </h3>
-              {
-                description.map((value, descriptionIndex) => (
-                  <p
-                    // eslint-disable-next-line react/no-array-index-key
-                    key={`${value.substring(0, 10)}-${descriptionIndex}`}
-                  >
-                    {value}
-                  </p>
-                ))
-              }
+              <div dangerouslySetInnerHTML={{ __html: section.body }} />
             </div>
           </SectionAnimated>
         ))

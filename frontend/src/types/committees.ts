@@ -16,7 +16,7 @@ export interface Committee extends RecordModel {
 
   [CommitteesFields.IMAGE]: string;
 
-  expand?: {
+  expand: {
     [CommitteesFields.IMAGE]: Image;
   };
 }
