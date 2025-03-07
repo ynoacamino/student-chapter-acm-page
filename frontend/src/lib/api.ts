@@ -2,6 +2,7 @@ import PocketBase from 'pocketbase';
 import { BACKEND_URL } from '@/config/variables';
 import { Collections } from '@/types/collections';
 import { Member } from '@/types/members';
+import { Committee, CommitteesFields } from '@/types/committees';
 
 export class PocketBaseAPI {
   pb: PocketBase;
@@ -15,6 +16,16 @@ export class PocketBaseAPI {
     const result = await this.pb.collection(Collections.MEMBERS).getFullList();
 
     return result as Member[];
+  }
+
+  async getAllComittesOverview(props?: { images: boolean }) {
+    const reqImages = props?.images ? CommitteesFields.IMAGE : '';
+    const fields = `${CommitteesFields.NAME},${CommitteesFields.DESCRIPTION},${reqImages}`;
+    const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
+      fields,
+    });
+    if (props?.images) return result as Committee[];
+    return result as Omit<Committee, CommitteesFields.IMAGE>[];
   }
 
   // async getInstitutions() {
