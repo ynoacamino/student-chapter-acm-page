@@ -40,8 +40,8 @@ export default async function Page({
       <Hero name={committee[CommitteesFields.NAME]} image={getThumbnailUrl(committee)} />
       <Sections content={sections} />
       <Members content={members} />
-      <ProximosEventos />
-      <EventosPasados />
+      <ProximosEventos committeeId={committee.id} />
+      <EventosPasados committeeId={committee.id} />
     </>
   );
 }

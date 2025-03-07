@@ -1,41 +1,21 @@
+'use client';
+
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import { AutoCarousel, AutoCarouselItem } from '@/components/ui/autoCarousel';
+import { AutoCarousel } from '@/components/ui/autoCarousel';
+import { useUpcomingEventsByCommittee } from '@/hooks/swr';
+import ProximosEventosItemSkeleton from './ProximosEventosItemSkeleton';
+import ProximosEventosItem from './ProximosEventosItem';
 
-const pastEvents = [
-  {
-    title: 'Proximo Evento 1',
-    description: 'Explora y organiza investigaciones con facilidad 1 organiza investigaciones',
-    date: '24 de Mayo',
-  },
-  {
-    title: 'Proximo Evento 2',
-    description: 'Explora y organiza investigaciones con facilidad 2 organiza investigaciones',
-    date: '24 de Mayo',
-  },
-  {
-    title: 'Proximo Evento 3',
-    description: 'Explora y organiza investigaciones con facilidad 3 organiza investigaciones',
-    date: '24 de Mayo',
-  },
-  {
-    title: 'Proximo Evento 4',
-    description: 'Explora y organiza investigaciones con facilidad 4 organiza investigaciones',
-    date: '24 de Mayo',
-  },
-  {
-    title: 'Proximo Evento 5',
-    description: 'Explora y organiza investigaciones con facilidad 5 organiza investigaciones',
-    date: '24 de Mayo',
-  },
-  {
-    title: 'Proximo Evento 6',
-    description: 'Explora y organiza investigaciones con facilidad 6 organiza investigaciones',
-    date: '24 de Mayo',
-  },
-];
+const ProximosEventosSkeleton = Array
+  .from({ length: 10 })
+  .map(() => <ProximosEventosItemSkeleton key={crypto.randomUUID()} />);
 
-export default function ProximosEventos() {
+export default function ProximosEventos({ committeeId }: { committeeId: string }) {
+  const { isLoading, upcomingEventsByCommittee } = useUpcomingEventsByCommittee({
+    committeeId,
+  });
+
   return (
     <Section>
       <Title as="h2">
@@ -44,21 +24,11 @@ export default function ProximosEventos() {
       <div className="mx-auto container px-3 mt-10">
         <AutoCarousel>
           {
-            pastEvents.map(({ title, description, date }) => (
-              <AutoCarouselItem key={title}>
-                <div className="flex flex-col items-start px-4 py-3 gap-y-2 border border-primary rounded-md justify-center mx-2">
-                  <span>
-                    {date}
-                  </span>
-                  <h3 className="text-2xl font-semibold">
-                    {title}
-                  </h3>
-                  <p>
-                    {description}
-                  </p>
-                </div>
-              </AutoCarouselItem>
-            ))
+            isLoading || !upcomingEventsByCommittee
+              ? ProximosEventosSkeleton
+              : upcomingEventsByCommittee.map((event) => (
+                <ProximosEventosItem key={event.id} {...event} />
+              ))
           }
         </AutoCarousel>
       </div>

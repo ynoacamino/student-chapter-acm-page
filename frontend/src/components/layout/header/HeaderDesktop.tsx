@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { pagesConfig } from '@/config/pages';
+import pagesConfig from '@/config/pages';
 import { cn } from '@/lib/utils';
 
 export default function HeaderDesktop({
@@ -9,12 +9,12 @@ export default function HeaderDesktop({
 }) {
   return (
     <nav className="hidden md:flex">
-      <ul className="flex justify-center gap-4 ">
+      <ul className="flex justify-center items-start gap-3">
         {pagesConfig.pages.map((pagina) => (
           <li
-            key={pagina.url}
+            key={pagina.path}
             className={cn('pt-4 pb-3', {
-              'bg-primary text-background rounded-b-sm': path === pagina.path,
+              'bg-primary text-background rounded-b-sm': (path.includes(pagina.path) && pagina.path !== '/') || path === pagina.path,
             })}
           >
             <Link
