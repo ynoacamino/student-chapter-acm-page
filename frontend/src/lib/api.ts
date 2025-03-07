@@ -3,10 +3,9 @@ import { BACKEND_URL } from '@/config/variables';
 import { Collections } from '@/types/collections';
 import { Member } from '@/types/members';
 import { Committee, CommitteesFields } from '@/types/committees';
-import { convertToRoute } from './utils';
 import { Event } from '@/types/events';
 import { Image } from '@/types/images';
-import { slugify } from '@/lib/utils';
+import { slugify, convertToRoute } from '@/lib/utils';
 import { Section, SectionsFields } from '@/types/sections';
 
 export class PocketBaseAPI {
@@ -42,7 +41,7 @@ export class PocketBaseAPI {
     });
     return result.map((comittee) => convertToRoute(comittee[CommitteesFields.NAME]));
   }
-  
+
   async getCommittees() {
     const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
       expand: 'image',
@@ -122,7 +121,6 @@ export class PocketBaseAPI {
 
     return result as Section[];
   }
-  
 }
 
 const api = new PocketBaseAPI();
