@@ -4,6 +4,7 @@ import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
 import { AutoCarousel } from '@/components/ui/autoCarousel';
 import { useUpcomingEventsByCommittee } from '@/hooks/swr';
+import { ComitesSections } from '@/config/pages';
 import ProximosEventosItemSkeleton from './ProximosEventosItemSkeleton';
 import ProximosEventosItem from './ProximosEventosItem';
 
@@ -17,7 +18,7 @@ export default function ProximosEventos({ committeeId }: { committeeId: string }
   });
 
   return (
-    <Section>
+    <Section id={ComitesSections.EVENTOS_FUTUROS_ID}>
       <Title as="h2">
         Proximos Eventos
       </Title>

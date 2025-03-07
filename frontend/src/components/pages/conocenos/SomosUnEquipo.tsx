@@ -2,6 +2,7 @@
 
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
+import { ConocenosSections } from '@/config/pages';
 import { motion } from 'motion/react';
 
 let PHOTOS = Array
@@ -18,7 +19,7 @@ PHOTOS = PHOTOS
 
 export default function SomosUnEquipo() {
   return (
-    <Section className="w-full max-w-none px-0 gap-10" suppressHydrationWarning>
+    <Section className="w-full max-w-none px-0 gap-10" suppressHydrationWarning id={ConocenosSections.SOMOS_UN_EQUIPO_ID}>
       <Title as="h2">
         Somos Un Equipo
       </Title>

@@ -13,7 +13,7 @@ export default function HeaderDesktop({
         {pagesConfig.pages.map((pagina) => (
           <li
             key={pagina.path}
-            className={cn('pt-4 pb-3', {
+            className={cn('pt-3 pb-3', {
               'bg-primary text-background rounded-b-sm': (path.includes(pagina.path) && pagina.path !== '/') || path === pagina.path,
             })}
           >

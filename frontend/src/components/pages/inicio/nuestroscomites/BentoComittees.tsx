@@ -1,5 +1,5 @@
-import { Committee } from '@/types/committees';
 import { cn, slugify } from '@/lib/utils';
+import api from '@/lib/api';
 import Comite from './Comite';
 import SquareGraphic from './SquareGraphic';
 import BlockGraphic from './BlockGraphic';
@@ -15,13 +15,9 @@ const ComittesClassNames = [
   'xl:col-start-2', // IA
 ];
 
-interface BentoComitteesProps {
-  comittees: Committee[];
-}
+export default async function BentoComittees() {
+  const comittees = await api.getCommittees();
 
-export default function BentoComittees({
-  comittees,
-}: BentoComitteesProps) {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 grid-rows-[repeat(auto-fit,1fr)] gap-5">
       {

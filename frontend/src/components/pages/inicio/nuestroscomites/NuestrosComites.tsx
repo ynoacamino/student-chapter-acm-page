@@ -1,21 +1,15 @@
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import { Committee } from '@/types/committees';
+import { InicioSections } from '@/config/pages';
 import BentoComites from './BentoComittees';
 
-interface NuestrosComitesProps {
-  comittees: Committee[];
-}
-
-export default function NuestrosComites({
-  comittees,
-}: NuestrosComitesProps) {
+export default function NuestrosComites() {
   return (
-    <Section className="gap-14">
+    <Section className="gap-14" id={InicioSections.NUESTROS_COMITES_ID}>
       <Title as="h2">
         Nuestros Comités
       </Title>
-      <BentoComites comittees={comittees} />
+      <BentoComites />
     </Section>
   );
 }

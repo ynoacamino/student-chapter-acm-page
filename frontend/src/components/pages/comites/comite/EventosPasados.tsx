@@ -6,6 +6,7 @@ import { AutoCarousel } from '@/components/ui/autoCarousel';
 import EventosPasadosItemSkeleton from '@/components/ui/EventosPasadosItemSkeleton';
 import EventosPasadosItem from '@/components/ui/EventosPasadosItem';
 import { usePastEventsByCommittee } from '@/hooks/swr';
+import { ComitesSections } from '@/config/pages';
 
 const EventosPasadosSkeleton = Array
   .from({ length: 10 })
@@ -15,7 +16,7 @@ export default function EventosPasados({ committeeId }: { committeeId: string })
   const { isLoading, pastEventsByCommittee } = usePastEventsByCommittee({ committeeId });
 
   return (
-    <Section>
+    <Section id={ComitesSections.EVENTOS_PASADOS_ID}>
       <Title as="h2">
         Eventos Pasados
       </Title>

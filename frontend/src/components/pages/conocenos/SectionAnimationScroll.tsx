@@ -8,14 +8,16 @@ import { cn } from '@/lib/utils';
 
 export default function SectionAnimationScroll(
   {
-    title, content, image, initial, last,
-  }: { title: string, content: string, image: string, initial: boolean, last: boolean },
+    title, content, image, initial, last, id,
+  }: { title: string, content: string, image: string, initial: boolean, last: boolean, id: string },
 ) {
   return (
-    <Section className={cn('h-[80vh] flex items-center justify-center my-28', {
-      'mt-96': initial,
-      'mb-[34rem]': last,
-    })}
+    <Section
+      id={id}
+      className={cn('h-[80vh] flex items-center justify-center my-28', {
+        'mt-96': initial,
+        'mb-[34rem]': last,
+      })}
     >
       <motion.div
         initial={{ opacity: 0 }}
