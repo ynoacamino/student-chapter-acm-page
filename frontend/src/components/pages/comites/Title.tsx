@@ -3,7 +3,7 @@ import Section from '@/components/ui/Section';
 export default function Title() {
   return (
     <Section>
-      <h1 className="flex flex-col gap-4 text-6xl lg:text-7xl font-bold">
+      <h1 className="flex flex-col gap-4 text-5xl lg:text-6xl font-bold">
         <span className="flex justify-center">
           Conoce
         </span>

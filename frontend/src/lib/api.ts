@@ -38,7 +38,6 @@ export class PocketBaseAPI {
       sort: '-date',
       expand: 'image',
     });
-
     return result.items as Event[];
   }
 
@@ -69,7 +68,7 @@ export class PocketBaseAPI {
 
   async getPastEventsByCommittee({ committeeId }: { committeeId: string }) {
     const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
-      filter: `committee="${committeeId}" AND date < @now`,
+      filter: `committee="${committeeId}" && date < @now`,
       sort: '-date',
       expand: 'image',
     });
@@ -79,7 +78,7 @@ export class PocketBaseAPI {
 
   async getUpcomingEventsByCommittee({ committeeId }: { committeeId: string }) {
     const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
-      filter: `committee="${committeeId}" AND date >= @now`,
+      filter: `committee="${committeeId}" && date >= @now`,
       sort: 'date',
       expand: 'image',
     });
