@@ -1,5 +1,4 @@
 import { cn } from '@/lib/utils';
-import Comite from './Comite';
 
 function Graphic({ className }: { className?: string }) {
   return (
@@ -16,19 +15,11 @@ function Graphic({ className }: { className?: string }) {
   );
 }
 
-export default function Comite2() {
+export default function BlockGraphic() {
   return (
-    <Comite
-      title="Comité de Desarrollo Web 2"
-      className="row-start-2 sm:row-start-1 sm:col-start-2 pb-0"
-      path="comite_2"
-    >
-      Universidad Nacional de San Agustin
-      de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
-      <div className="relative ml-auto mt-auto">
-        <Graphic />
-        <Graphic className="absolute left-0 bottom-0 blur-[30px]" />
-      </div>
-    </Comite>
+    <div className="relative ml-auto mt-auto">
+      <Graphic />
+      <Graphic className="absolute left-0 bottom-0 blur-[30px]" />
+    </div>
   );
 }

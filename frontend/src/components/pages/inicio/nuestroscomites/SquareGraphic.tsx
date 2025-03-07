@@ -1,5 +1,4 @@
 import { cn } from '@/lib/utils';
-import Comite from './Comite';
 
 function Graphic({ className }: { className?: string }) {
   return (
@@ -13,19 +12,11 @@ function Graphic({ className }: { className?: string }) {
   );
 }
 
-export default function Comite1() {
+export default function SquareGraphic() {
   return (
-    <Comite
-      title="Comité de Desarrollo Web 1"
-      className="row-start-1 xl:row-span-2"
-      path="comite_1"
-    >
-      Universidad Nacional de San Agustin
-      de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
-      <div className="relative mx-auto mt-auto">
-        <Graphic />
-        <Graphic className="absolute inset-0 blur-[30px]" />
-      </div>
-    </Comite>
+    <div className="relative mx-auto mt-auto">
+      <Graphic />
+      <Graphic className="absolute inset-0 blur-[30px]" />
+    </div>
   );
 }

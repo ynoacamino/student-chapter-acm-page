@@ -1,9 +1,8 @@
 import { cn } from '@/lib/utils';
-import Comite from './Comite';
 
 function Graphic({ className }: { className?: string }) {
   return (
-    <svg className={cn('w-full max-w-md ml-auto', className)} viewBox="0 150 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg className={cn('w-full max-w-sm ml-auto', className)} viewBox="0 150 420 180" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g clipPath="url(#clip0_16_101)" filter="url(#filter0_d_16_101)">
         <path d="M169.333 261H238.333" stroke="#F44236" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M204.333 227V296" stroke="#F44236" strokeWidth="12" strokeLinecap="round" strokeLinejoin="round" />
@@ -19,19 +18,11 @@ function Graphic({ className }: { className?: string }) {
   );
 }
 
-export default function Comite4() {
+export default function GamepadGraphic() {
   return (
-    <Comite
-      title="Comité de Desarrollo Web 4"
-      className="row-start-4 sm:row-start-3 xl:row-start-2 xl:col-start-2 xl:col-span-3 pb-0 pr-0"
-      path="comite_4"
-    >
-      Universidad Nacional de San Agustin
-      de Arequipa lorem a niversidad Nacional de San Agustin de Arequipa lorem.
-      <div className="relative">
-        <Graphic />
-        <Graphic className="absolute right-0 bottom-0 blur-[30px]" />
-      </div>
-    </Comite>
+    <div className="relative">
+      <Graphic />
+      <Graphic className="absolute right-0 bottom-0 blur-[30px]" />
+    </div>
   );
 }

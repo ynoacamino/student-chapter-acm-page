@@ -1,14 +1,21 @@
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import BentoComites from './BentoComites';
+import { Committee } from '@/types/committees';
+import BentoComites from './BentoComittees';
 
-export default function NuestrosComites() {
+interface NuestrosComitesProps {
+  comittees: Committee[];
+}
+
+export default function NuestrosComites({
+  comittees,
+}: NuestrosComitesProps) {
   return (
     <Section className="gap-14">
       <Title as="h2">
         Nuestros Comités
       </Title>
-      <BentoComites />
+      <BentoComites comittees={comittees} />
     </Section>
   );
 }
