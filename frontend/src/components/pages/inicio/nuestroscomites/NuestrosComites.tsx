@@ -1,10 +1,10 @@
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import { Committee, CommitteesFields } from '@/types/committees';
+import { Committee } from '@/types/committees';
 import BentoComites from './BentoComittees';
 
 interface NuestrosComitesProps {
-  comittees: Omit<Committee, CommitteesFields.IMAGE>[];
+  comittees: Committee[];
 }
 
 export default function NuestrosComites({

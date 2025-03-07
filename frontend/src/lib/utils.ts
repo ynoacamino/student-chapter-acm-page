@@ -14,10 +14,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function convertToRoute(route: string) {
-  return route.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replaceAll(' ', '-');
-}
-
 export function slugify(text: string) {
   return slugifyLib(text, { lower: true });
 }

@@ -6,7 +6,7 @@ import QuienesSomos from '@/components/pages/inicio/QuienesSomos';
 import api from '@/lib/api';
 
 export default async function Home() {
-  const comittees = await api.getAllComittesOverview();
+  const comittees = await api.getCommittees();
   return (
     <>
       <Hero />

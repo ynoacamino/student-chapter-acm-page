@@ -5,7 +5,7 @@ import { Member } from '@/types/members';
 import { Committee, CommitteesFields } from '@/types/committees';
 import { Event } from '@/types/events';
 import { Image } from '@/types/images';
-import { slugify, convertToRoute } from '@/lib/utils';
+import { slugify } from '@/lib/utils';
 import { Section, SectionsFields } from '@/types/sections';
 
 export class PocketBaseAPI {
@@ -22,24 +22,6 @@ export class PocketBaseAPI {
     });
 
     return result as Member[];
-  }
-
-  async getAllComittesOverview(props?: { images: boolean }) {
-    const reqImages = props?.images ? CommitteesFields.IMAGE : '';
-    const fields = `${CommitteesFields.NAME},${CommitteesFields.EXCERPT},${reqImages}`;
-    const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
-      fields,
-    });
-    if (props?.images) return result as Committee[];
-    return result as Omit<Committee, CommitteesFields.IMAGE>[];
-  }
-
-  async getAllComittesRoutes() {
-    const fields = CommitteesFields.NAME;
-    const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
-      fields,
-    });
-    return result.map((comittee) => convertToRoute(comittee[CommitteesFields.NAME]));
   }
 
   async getCommittees() {
