@@ -16,7 +16,7 @@ export default function Sections({
           <SectionAnimated
             // eslint-disable-next-line react/no-array-index-key
             key={`${title}-${index}`}
-            className="flex gap-14"
+            className="flex flex-col md:flex-row gap-14"
           >
             <Image src={img} alt={img} width={0} height={0} className="grow w-full" />
             <div className="flex flex-col justify-center gap-4">
