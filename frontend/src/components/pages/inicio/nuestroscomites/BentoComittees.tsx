@@ -1,11 +1,19 @@
-import { Committee, CommitteesFields } from '@/types/committees';
-import { slugify } from '@/lib/utils';
-import Comite1 from './Comite1';
-import Comite2 from './Comite2';
-import Comite3 from './Comite3';
-import Comite4 from './Comite4';
-import Comite5 from './Comite5';
-import Comite6 from './Comite6';
+import { Committee } from '@/types/committees';
+import { cn, slugify } from '@/lib/utils';
+import Comite from './Comite';
+import SquareGraphic from './SquareGraphic';
+import BlockGraphic from './BlockGraphic';
+import GamepadGraphic from './GamepadGraphic';
+
+const ComittesClassNames = [
+  'sm:row-span-2 xl:row-span-3 xl:row-start-1', // Desarrollo web
+  'sm:row-start-3 sm:col-span-2 xl:row-start-1 pb-0 pr-0', // Videojuegos
+  'xl:row-span-2 xl:col-start-2 xl:row-start-2', // Ciberseguridad
+  'xl:col-start-3 xl:row-start-2', // Programación competitiva
+  'sm:col-start-2 sm:row-span-2 xl:row-start-3 xl:col-start-3 pb-0', // Desarrollo de software
+  'sm:row-start-4', // Marketing
+  'xl:col-start-2', // IA
+];
 
 interface BentoComitteesProps {
   comittees: Committee[];
@@ -15,44 +23,28 @@ export default function BentoComittees({
   comittees,
 }: BentoComitteesProps) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 grid-rows-[repeat(auto-fill,1fr)] gap-5">
-      <Comite1
-        title={comittees[0][CommitteesFields.NAME]}
-        path={slugify(comittees[0][CommitteesFields.NAME])}
-      >
-        {comittees[0][CommitteesFields.EXCERPT]}
-      </Comite1>
-      <Comite2
-        title={comittees[1][CommitteesFields.NAME]}
-        path={slugify(comittees[1][CommitteesFields.NAME])}
-      >
-        {comittees[1][CommitteesFields.EXCERPT]}
-      </Comite2>
-      <Comite3
-        title={comittees[2][CommitteesFields.NAME]}
-        path={slugify(comittees[2][CommitteesFields.NAME])}
-      >
-        {comittees[2][CommitteesFields.EXCERPT]}
-      </Comite3>
-      <Comite4
-        title={comittees[3][CommitteesFields.NAME]}
-        path={slugify(comittees[3][CommitteesFields.NAME])}
-      >
-        {comittees[3][CommitteesFields.EXCERPT]}
-      </Comite4>
-      <Comite5
-        title={comittees[4][CommitteesFields.NAME]}
-        path={slugify(comittees[4][CommitteesFields.NAME])}
-      >
-        {comittees[4][CommitteesFields.EXCERPT]}
-      </Comite5>
-      <Comite6
-        title={comittees[5][CommitteesFields.NAME]}
-        path={slugify(comittees[5][CommitteesFields.NAME])}
-      >
-        {comittees[5][CommitteesFields.EXCERPT]}
-      </Comite6>
-
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 grid-rows-[repeat(auto-fit,1fr)] gap-5">
+      {
+        comittees.map(({ id, name, excerpt }, index) => (
+          <Comite
+            key={id}
+            name={name}
+            path={slugify(name)}
+            className={cn(ComittesClassNames.at(index) || '')}
+          >
+            {excerpt}
+            {
+              index === 0 && <SquareGraphic />
+            }
+            {
+              index === 1 && <GamepadGraphic />
+            }
+            {
+              index === 4 && <BlockGraphic />
+            }
+          </Comite>
+        ))
+      }
     </div>
   );
 }

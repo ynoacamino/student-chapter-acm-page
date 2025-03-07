@@ -1,5 +1,4 @@
 import { cn } from '@/lib/utils';
-import Comite, { ComiteProps } from './Comite';
 
 function Graphic({ className }: { className?: string }) {
   return (
@@ -16,20 +15,11 @@ function Graphic({ className }: { className?: string }) {
   );
 }
 
-export default function Comite2({
-  title, path, children,
-}: Omit<ComiteProps, 'className'>) {
+export default function BlockGraphic() {
   return (
-    <Comite
-      title={title}
-      className="row-start-2 sm:row-start-1 sm:col-start-2 pb-0"
-      path={path}
-    >
-      {children}
-      <div className="relative ml-auto mt-auto">
-        <Graphic />
-        <Graphic className="absolute left-0 bottom-0 blur-[30px]" />
-      </div>
-    </Comite>
+    <div className="relative ml-auto mt-auto">
+      <Graphic />
+      <Graphic className="absolute left-0 bottom-0 blur-[30px]" />
+    </div>
   );
 }
