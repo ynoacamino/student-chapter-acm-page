@@ -5,6 +5,7 @@ import Title from '@/components/ui/Title';
 import useMeasure from 'react-use-measure';
 import { animate, motion, useMotionValue } from 'motion/react';
 import { useEffect, useState } from 'react';
+import { ConocenosSections } from '@/config/pages';
 
 let PHOTOS = Array
   .from({ length: 5 })
