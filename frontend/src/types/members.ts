@@ -28,7 +28,7 @@ export interface Member extends RecordModel {
   [MembersFields.PHOTO]: string;
   [MembersFields.COMMITTEE]: string;
 
-  expand?: {
+  expand: {
     [MembersFields.PHOTO]: Image;
     [MembersFields.COMMITTEE]: Committee;
   };

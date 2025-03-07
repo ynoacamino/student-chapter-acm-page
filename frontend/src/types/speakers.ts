@@ -18,7 +18,7 @@ export interface Speaker extends RecordModel {
 
   [SpeakersFields.PHOTO]: string;
 
-  expand?: {
+  expand: {
     [SpeakersFields.PHOTO]: Image;
   };
 }

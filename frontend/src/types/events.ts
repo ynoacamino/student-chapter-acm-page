@@ -24,7 +24,7 @@ export interface Event extends RecordModel {
   [EventsFields.SPEAKER]: string;
   [EventsFields.COMMITTEE]: string;
 
-  expand?: {
+  expand: {
     [EventsFields.IMAGE]: Image;
     [EventsFields.SPEAKER]: Speaker;
     [EventsFields.COMMITTEE]: Committee;

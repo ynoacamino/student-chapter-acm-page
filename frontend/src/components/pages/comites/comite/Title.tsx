@@ -9,7 +9,7 @@ export default function Title({ content }: TitleProps) {
         Comité de
       </span>
       <span className="text-background bg-primary rounded-lg px-3 py-2">
-        {content}
+        {content.slice(10)}
       </span>
     </h1>
   );

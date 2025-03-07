@@ -1,27 +1,20 @@
-import Image from 'next/image';
+import { getThumbnailUrl, slugify } from '@/lib/utils';
+import { Committee } from '@/types/committees';
 import Link from 'next/link';
 
-interface ComiteCardProps {
-  title: string;
-  content: string;
-  img: string;
-  path: string;
-}
-
-export default function ComiteCard({
-  title, content, img, path,
-}: ComiteCardProps) {
+export default function ComiteCard(committee: Committee) {
+  const { name, excerpt } = committee;
   return (
     <Link
-      href={`/comites/${path}`}
+      href={`/comites/${slugify(name)}`}
       className="flex flex-col gap-6 border-muted border-2 rounded-xl p-6 hover:scale-105 transition-transform"
     >
-      <Image src={`/comites/${img}`} alt={img} width={0} height={0} className="w-full" />
+      <img src={getThumbnailUrl(committee)} alt={name} className="w-full" />
       <h2 className="text-xl font-semibold">
-        {title}
+        {name}
       </h2>
       <p className="">
-        {content}
+        {excerpt}
       </p>
     </Link>
   );
