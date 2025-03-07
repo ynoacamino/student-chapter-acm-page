@@ -2,14 +2,15 @@
 
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import { motion } from 'motion/react';
+import useMeasure from 'react-use-measure';
+import { animate, motion, useMotionValue } from 'motion/react';
+import { useEffect, useState } from 'react';
 
 let PHOTOS = Array
   .from({ length: 5 })
   .map((_, i) => ({
     id: i * 13,
     img: '/comites/mock.png',
-    rotate: Math.random() * 10 - 5,
   }));
 
 PHOTOS = PHOTOS
@@ -17,6 +18,40 @@ PHOTOS = PHOTOS
   .map((p, i) => ({ ...p, id: i >= PHOTOS.length ? i * 13 : p.id }));
 
 export default function SomosUnEquipo() {
+  const [containerRef, { width }] = useMeasure();
+  const xTranslation = useMotionValue(0);
+  const [mustFinish, setMustFinish] = useState(false);
+  const [rerender, setRerender] = useState(false);
+  const [onHover, setOnHover] = useState(false);
+
+  useEffect(() => {
+    const finalPosition = -width / 2 - 8;
+    if (onHover) {
+      return;
+    }
+    let controls = animate(xTranslation, [0, finalPosition], {
+      ease: 'linear',
+      duration: 20,
+      repeat: Infinity,
+      repeatType: 'loop',
+      repeatDelay: 0,
+    });
+    // Se 'corta' la animación, entonces inicia la animación que permite
+    // terminarla
+    if (mustFinish) {
+      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
+        ease: 'linear',
+        duration: 20 * (1 - xTranslation.get() / finalPosition),
+        onComplete() {
+          setMustFinish(false);
+          setRerender((val) => !val);
+        }
+      });
+    }
+    return controls.stop;
+
+  }, [xTranslation, width, mustFinish, rerender, onHover]);
+
   return (
     <Section className="w-full max-w-none px-0 gap-10" suppressHydrationWarning>
       <Title as="h2">
@@ -24,33 +59,33 @@ export default function SomosUnEquipo() {
       </Title>
       <div className="overflow-x-hidden w-full">
         <motion.div
-          className="flex h-80 md:h-[30rem] justify-start items-center"
-          animate={{ x: '-50%' }}
-          transition={{
-            repeat: Infinity,
-            duration: 18,
-            ease: 'linear',
-          }}
+          ref={containerRef}
+          className="flex h-72 md:h-[30rem] justify-start items-center gap-4 w-max"
+          style={{ x: xTranslation }}
         >
           {
-            PHOTOS
-              .map(({ id, rotate, img }) => (
-                <motion.img
-                  key={id}
-                  src={img}
-                  alt="mock"
-                  className="w-full max-w-2xs md:max-w-sm mr-16 rounded-xl"
-                  initial={{
-                    rotate,
-                  }}
-                  whileHover={{
-                    scale: 1.1,
-                    rotate: 0,
-                  }}
-                />
-              ))
-        }
+            [...PHOTOS, ...PHOTOS].map(({ id, img }, index) => (
+              <motion.img
+                key={index < PHOTOS.length ? id : id + PHOTOS.length}
+                src={img}
+                alt="mock"
+                className="rounded-xl max-h-24 md:max-h-36"
+                whileHover={{
+                  scale: 1.1,
+                }}
+                onHoverStart={() => {
+                  setMustFinish(true);
+                  setOnHover(true);
+                }}
+                onHoverEnd={() => {
+                  setMustFinish(true);
+                  setOnHover(false);
+                }}
+              />
+            ))
+          }
         </motion.div>
+
       </div>
     </Section>
   );
