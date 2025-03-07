@@ -1,9 +1,10 @@
 'use client';
 
 import Title from '@/components/pages/conocenos/Title';
-import Vision from '@/components/pages/conocenos/SectionAnimationScroll';
+import SectionAnimationScroll from '@/components/pages/conocenos/SectionAnimationScroll';
 import dynamic from 'next/dynamic';
 import JuntosParaLograrlo from '@/components/pages/conocenos/JuntosParaLograrlo';
+import { ConocenosSections } from '@/config/pages';
 
 const SomosUnEquipo = dynamic(() => import('@/components/pages/conocenos/SomosUnEquipo'), { ssr: false });
 
@@ -21,7 +22,7 @@ const DATA_SECTIONS = [
       of using Lorem Ipsum
     </p>`,
     image: '/comites/mock.png',
-
+    id: ConocenosSections.QUIENES_SOMOS_ID,
   },
   {
     title: 'Mision',
@@ -36,6 +37,7 @@ const DATA_SECTIONS = [
       of using Lorem Ipsum
     </p>`,
     image: '/comites/mock.png',
+    id: ConocenosSections.MISION_ID,
   },
   {
     title: 'Vision',
@@ -50,6 +52,7 @@ const DATA_SECTIONS = [
       of using Lorem Ipsum
     </p>`,
     image: '/comites/mock.png',
+    id: ConocenosSections.VISION_ID,
   },
 ];
 
@@ -59,8 +62,9 @@ export default function Page() {
       <Title />
       {
         DATA_SECTIONS.map((section, index) => (
-          <Vision
+          <SectionAnimationScroll
             key={section.title}
+            id={section.id}
             title={section.title}
             content={section.content}
             image={section.image}

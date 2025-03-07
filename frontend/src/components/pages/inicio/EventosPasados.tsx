@@ -6,6 +6,7 @@ import { AutoCarousel } from '@/components/ui/autoCarousel';
 import { usePastEvents } from '@/hooks/swr';
 import EventosPasadosItemSkeleton from '@/components/ui/EventosPasadosItemSkeleton';
 import EventosPasadosItem from '@/components/ui/EventosPasadosItem';
+import { InicioSections } from '@/config/pages';
 
 const EventosPasadosSkeleton = Array
   .from({ length: 10 })
@@ -15,7 +16,7 @@ export default function EventosPasados() {
   const { isLoading, pastEvents } = usePastEvents();
 
   return (
-    <Section>
+    <Section id={InicioSections.EVENTOS_PASADOS_ID}>
       <Title as="h2">
         Eventos Pasados
       </Title>

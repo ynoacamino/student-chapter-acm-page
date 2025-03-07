@@ -94,3 +94,9 @@
     @apply bg-background text-foreground;
   }
 }
+
+:target,
+section[id],
+div[id] {
+  scroll-margin-top: 4.5rem;
+}

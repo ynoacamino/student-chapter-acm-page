@@ -3,21 +3,45 @@ import api from '@/lib/api';
 import { slugify } from '@/lib/utils';
 import { CommitteesFields } from '@/types/committees';
 
-interface Section {
+export interface Section {
   name: string;
   id: string;
 }
 
-interface Page {
+export interface Page {
   name: string;
   path: string;
   sections?: Section[];
   pages?: Page[];
 }
 
-interface PageConfig {
+export interface PageConfig {
   domain: string;
   pages: Page[];
+}
+
+export enum InicioSections {
+  QUIENES_SOMOS_ID = 'inicio-quienes-somos',
+  NUESTROS_COMITES_ID = 'inicio-comites',
+  EVENTOS_PASADOS_ID = 'inicio-eventos-pasados',
+  MANTENTE_ACTUALIZADO_ID = 'inicio-mantente-actualizado',
+}
+
+export enum ConocenosSections {
+  QUIENES_SOMOS_ID = 'conocenos-quienes-somos',
+  MISION_ID = 'conocenos-mision',
+  VISION_ID = 'conocenos-vision',
+  SOMOS_UN_EQUIPO_ID = 'conocenos-somos-un-equipo',
+  JUNTOS_PARA_LOGRARLO_ID = 'conocenos-juntos-para-lograrlo',
+}
+
+export enum ComitesSections {
+  NUESTROS_INTEGRANTES_ID = 'comites-nuestros-integrantes',
+  DIRECTIVA_ID = 'comites-directiva',
+  MIEMBROS_ID = 'comites-miembros',
+  VOLUNTARIOS_ID = 'comites-voluntarios',
+  EVENTOS_PASADOS_ID = 'comites-eventos-pasados',
+  EVENTOS_FUTUROS_ID = 'comites-eventos-futuros',
 }
 
 const pagesConfigInit = async (): Promise<PageConfig> => {
@@ -34,19 +58,19 @@ const pagesConfigInit = async (): Promise<PageConfig> => {
           sections: [
             {
               name: 'Quienes Somos',
-              id: 'inicio-eventos',
+              id: InicioSections.QUIENES_SOMOS_ID,
             },
             {
               name: 'Nuestros Comites',
-              id: 'inicio-comites',
+              id: InicioSections.NUESTROS_COMITES_ID,
             },
             {
               name: 'Eventos Pasados',
-              id: 'inicio-eventos-pasados',
+              id: InicioSections.EVENTOS_PASADOS_ID,
             },
             {
               name: 'Mantente Actualizado',
-              id: 'inicio-mantente-actualizado',
+              id: InicioSections.MANTENTE_ACTUALIZADO_ID,
             },
           ],
         },
@@ -56,23 +80,23 @@ const pagesConfigInit = async (): Promise<PageConfig> => {
           sections: [
             {
               name: 'Quienes Somos',
-              id: 'conocenos-quienes-somos',
+              id: ConocenosSections.QUIENES_SOMOS_ID,
             },
             {
               name: 'Mision',
-              id: 'conocenos-mision',
+              id: ConocenosSections.MISION_ID,
             },
             {
               name: 'Vision',
-              id: 'conocenos-vision',
+              id: ConocenosSections.VISION_ID,
             },
             {
               name: 'Somos un Equipo',
-              id: 'conocenos-somos-un-equipo',
+              id: ConocenosSections.SOMOS_UN_EQUIPO_ID,
             },
             {
               name: 'Juntos para Lograrlo',
-              id: 'conocenos-juntos-para-lograrlo',
+              id: ConocenosSections.JUNTOS_PARA_LOGRARLO_ID,
             },
           ],
         },
@@ -85,27 +109,27 @@ const pagesConfigInit = async (): Promise<PageConfig> => {
             sections: [
               {
                 name: 'Nuestros Integrantes',
-                id: 'comite-integrantes',
+                id: ComitesSections.NUESTROS_INTEGRANTES_ID,
               },
               {
                 name: 'Directiva',
-                id: 'comite-directiva',
+                id: ComitesSections.DIRECTIVA_ID,
               },
               {
                 name: 'Miembros',
-                id: 'comite-miembros',
+                id: ComitesSections.MIEMBROS_ID,
               },
               {
                 name: 'Voluntarios',
-                id: 'comite-voluntarios',
+                id: ComitesSections.VOLUNTARIOS_ID,
               },
               {
                 name: 'Eventos Pasados',
-                id: 'comite-eventos-pasados',
+                id: ComitesSections.EVENTOS_PASADOS_ID,
               },
               {
                 name: 'Eventos Futuros',
-                id: 'comite-eventos-futuros',
+                id: ComitesSections.EVENTOS_FUTUROS_ID,
               },
             ],
           })),

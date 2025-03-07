@@ -12,11 +12,37 @@ import {
 import pagesConfig from '@/config/pages';
 import { cn } from '@/lib/utils';
 import { Menu } from 'lucide-react';
-import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { ReactNode, useState } from 'react';
+
+function LinkMobile(
+  props: React.ComponentProps<'a'> & { children: ReactNode; setSheetOpen: (value: boolean) => void },
+) {
+  const { push } = useRouter();
+  const {
+    href, setSheetOpen, children, ...rest
+  } = props;
+
+  return (
+    <a
+      {...rest}
+      href={href?.toString()}
+      onClick={(e) => {
+        e.preventDefault();
+        setSheetOpen(false);
+        push(href?.toString() || '');
+      }}
+    >
+      {children}
+    </a>
+  );
+}
 
 export default function HeaderMobile({ path }: { path: string }) {
+  const [sheetOpen, setSheetOpen] = useState(false);
+
   return (
-    <Sheet>
+    <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger asChild className="flex md:hidden">
         <Button variant="ghost" size="icon" className="size-10">
           <Menu className="size-6" />
@@ -47,36 +73,39 @@ export default function HeaderMobile({ path }: { path: string }) {
           <nav className="flex flex-col justify-center gap-6 px-4 font-medium text-primary/80">
             {pagesConfig.pages.map((pagina) => (
               <div key={pagina.path}>
-                <Link
+                <LinkMobile
                   href={pagina.path}
                   className={cn('px-2 py-2 text-primary font-semibold mb-4 hover:underline', {
-                    'bg-primary text-background rounded-sm': path === pagina.path,
+                    'bg-primary text-background rounded-sm': (path.includes(pagina.path) && pagina.path !== '/') || path === pagina.path,
                   })}
                   aria-current={path === pagina.path ? 'page' : undefined}
+                  setSheetOpen={setSheetOpen}
                 >
                   {pagina.name}
-                </Link>
+                </LinkMobile>
                 <div className="flex flex-col pl-7 py-2">
                   {
                 pagina.sections && pagina.sections.map((section) => (
-                  <Link
+                  <LinkMobile
                     key={section.id}
-                    href={`${pagina.path}#${section}`}
+                    href={`${pagina.path}#${section.id}`}
                     className="px-1 py-1"
+                    setSheetOpen={setSheetOpen}
                   >
                     {section.name}
-                  </Link>
+                  </LinkMobile>
                 ))
                 }
                   {
                 pagina.pages && pagina.pages.map((subPage) => (
-                  <Link
+                  <LinkMobile
                     key={subPage.path}
                     href={subPage.path}
                     className="px-1 py-1"
+                    setSheetOpen={setSheetOpen}
                   >
                     {subPage.name}
-                  </Link>
+                  </LinkMobile>
                 ))
                 }
                 </div>

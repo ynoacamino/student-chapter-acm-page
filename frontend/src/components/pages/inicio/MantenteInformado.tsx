@@ -1,10 +1,11 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Section from '@/components/ui/Section';
+import { InicioSections } from '@/config/pages';
 
 export default function MantenteInformado() {
   return (
-    <Section className="flex justify-center">
+    <Section className="flex justify-center" id={InicioSections.MANTENTE_ACTUALIZADO_ID}>
       <div className="w-full container px-6 flex flex-col mx-6 bg-[#1B283F] rounded-2xl items-center gap-2 py-24 my-24 relative overflow-hidden">
         <h1 className="text-primary-foreground text-4xl font-bold text-center">
           Mantente Actualizado
