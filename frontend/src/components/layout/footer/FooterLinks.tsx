@@ -14,7 +14,7 @@ export default function FooterLinks() {
           />
         ))
       }
-      <Link href="https://acm.org" className="flex justify-center basis-36 max-h-60 grow">
+      <Link href="https://acm.org" className="flex justify-center basis-36 max-h-60 grow self-center">
         <ACMLogo />
       </Link>
     </div>
