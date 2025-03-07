@@ -3,6 +3,7 @@ import { BACKEND_URL } from '@/config/variables';
 import { Collections } from '@/types/collections';
 import { Member } from '@/types/members';
 import { Committee, CommitteesFields } from '@/types/committees';
+import { convertToRoute } from './utils';
 
 export class PocketBaseAPI {
   pb: PocketBase;
@@ -20,12 +21,20 @@ export class PocketBaseAPI {
 
   async getAllComittesOverview(props?: { images: boolean }) {
     const reqImages = props?.images ? CommitteesFields.IMAGE : '';
-    const fields = `${CommitteesFields.NAME},${CommitteesFields.DESCRIPTION},${reqImages}`;
+    const fields = `${CommitteesFields.NAME},${CommitteesFields.EXCERPT},${reqImages}`;
     const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
       fields,
     });
     if (props?.images) return result as Committee[];
     return result as Omit<Committee, CommitteesFields.IMAGE>[];
+  }
+
+  async getAllComittesRoutes() {
+    const fields = CommitteesFields.NAME;
+    const result = await this.pb.collection(Collections.COMMITTEES).getFullList({
+      fields,
+    });
+    return result.map((comittee) => convertToRoute(comittee[CommitteesFields.NAME]));
   }
 
   // async getInstitutions() {
