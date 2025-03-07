@@ -27,7 +27,7 @@ export default function SomosUnEquipo() {
   useEffect(() => {
     const finalPosition = -width / 2 - 8;
     if (onHover) {
-      return;
+      return () => {};
     }
     let controls = animate(xTranslation, [0, finalPosition], {
       ease: 'linear',
@@ -45,11 +45,10 @@ export default function SomosUnEquipo() {
         onComplete() {
           setMustFinish(false);
           setRerender((val) => !val);
-        }
+        },
       });
     }
     return controls.stop;
-
   }, [xTranslation, width, mustFinish, rerender, onHover]);
 
   return (
