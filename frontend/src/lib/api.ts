@@ -4,7 +4,7 @@ import { Collections } from '@/types/collections';
 import { Member } from '@/types/members';
 import { Committee, CommitteesFields } from '@/types/committees';
 import { Event } from '@/types/events';
-import { Image } from '@/types/images';
+import { Image, ImagesFields, ImagesRatio } from '@/types/images';
 import { slugify } from '@/lib/utils';
 import { Section, SectionsFields } from '@/types/sections';
 
@@ -53,6 +53,14 @@ export class PocketBaseAPI {
 
   async getFullImages() {
     const result = await this.pb.collection(Collections.IMAGES).getFullList();
+
+    return result as Image[];
+  }
+
+  async get_4_3_Images() {
+    const result = await this.pb.collection(Collections.IMAGES).getFullList({
+      filter: `${ImagesFields.RATIO} = "${ImagesRatio.RATIO_4_3}"`,
+    });
 
     return result as Image[];
   }

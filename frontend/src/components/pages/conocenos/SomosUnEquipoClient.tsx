@@ -1,11 +1,17 @@
-'use client';
+import SomosUnEquipo from '@/components/pages/conocenos/SomosUnEquipo';
+import api from '@/lib/api';
+import { Image, ImageCarousel } from '@/types/images';
 
-import dynamic from 'next/dynamic';
+export default async function SomosUnEquipoClient() {
+  const images: (Image & { rotate: number })[] = (await api.get_4_3_Images())
+    .map((i) => ({ ...i, rotate: Math.random() * 10 - 5 }));
 
-const SomosUnEquipo = dynamic(() => import('@/components/pages/conocenos/SomosUnEquipo'), { ssr: false });
+  const photos: ImageCarousel[] = images.concat(images).map((i) => ({
+    ...i,
+    uuid: crypto.randomUUID(),
+  }));
 
-export default function SomosUnEquipoClient() {
   return (
-    <SomosUnEquipo />
+    <SomosUnEquipo photos={photos} />
   );
 }

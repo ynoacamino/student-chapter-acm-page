@@ -35,3 +35,8 @@ export interface Image extends RecordModel {
   [ImagesFields.RATIO]: ImagesRatio;
   [ImagesFields.CATEGORY]: ImagesCategories;
 }
+
+export interface ImageCarousel extends Image {
+  rotate: number;
+  uuid: string;
+}
