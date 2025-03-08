@@ -53,7 +53,7 @@ export default function SomosUnEquipo() {
   }, [xTranslation, width, mustFinish, rerender, onHover]);
 
   return (
-    <Section className="w-full max-w-none px-0 gap-10" suppressHydrationWarning id={ConocenosSections.SOMOS_UN_EQUIPO_ID}>
+    <Section className="w-full max-w-none px-0 gap-10 z-30" suppressHydrationWarning id={ConocenosSections.SOMOS_UN_EQUIPO_ID}>
       <Title as="h2">
         Somos Un Equipo
       </Title>

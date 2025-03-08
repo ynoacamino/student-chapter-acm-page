@@ -9,7 +9,7 @@ export default function Header() {
   const path = usePathname();
 
   return (
-    <div className="w-full bg-background/80 backdrop-blur-xl sticky top-0 z-50">
+    <div className="w-full bg-background/70 backdrop-blur-xl sticky top-0 z-50">
       <header className="w-full flex justify-between items-start max-w-7xl z-50 md:px-10 px-4 py-2 md:py-0">
         <Link
           href="https://acm.org"

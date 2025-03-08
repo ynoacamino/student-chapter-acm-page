@@ -8,7 +8,7 @@ export default async function JuntosParaLograrlo() {
   const members = await api.getMembers();
 
   return (
-    <Section className="gap-16" id={ConocenosSections.JUNTOS_PARA_LOGRARLO_ID}>
+    <Section className="gap-16 z-30" id={ConocenosSections.JUNTOS_PARA_LOGRARLO_ID}>
       <Title as="h2">
         Juntos Para Lograrlo
       </Title>

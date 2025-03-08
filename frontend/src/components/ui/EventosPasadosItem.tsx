@@ -7,14 +7,14 @@ export default function EventosPasadosItem(event: Event) {
 
   return (
     <AutoCarouselItem>
-      <div className="flex flex-col items-center px-4 py-5 sm:p-6 gap-y-10">
-        <div className="flex flex-col gap-2">
+      <div className="flex flex-col items-center px-4 py-5 gap-y-6 sm:p-6 h-full justify-between">
+        <div className="flex flex-col gap-2 overflow-y-hidden">
           <p className="text-2xl font-semibold text-gray-900 text-center">
             {name}
           </p>
-          <p className="text-sm text-gray-600 px-2 ">{excerpt}</p>
+          <p className="text-sm text-gray-600 px-2 text-center">{excerpt}</p>
         </div>
-        <div className="flex items-center justify-center h-64 my-auto">
+        <div className="flex items-center justify-end">
           <img
             className="rounded-xl bg-muted size-72 aspect-square object-cover"
             src={getThumbnailUrl(event)}
