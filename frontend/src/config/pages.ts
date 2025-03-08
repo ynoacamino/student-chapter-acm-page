@@ -2,6 +2,7 @@ import { FRONTEND_URL } from '@/config/variables';
 import api from '@/lib/api';
 import { slugify } from '@/lib/utils';
 import { CommitteesFields } from '@/types/committees';
+import { ImagesCategories } from '@/types/images';
 
 export interface Section {
   name: string;
@@ -137,6 +138,10 @@ const pagesConfigInit = async (): Promise<PageConfig> => {
         {
           name: 'Galeria',
           path: '/galeria',
+          sections: Object.values(ImagesCategories).map((category) => ({
+            name: category,
+            id: `${slugify(category)}`,
+          })),
         },
       ],
     }

@@ -16,7 +16,7 @@ export default function EventosPasadosItem(event: Event) {
         </div>
         <div className="flex items-center justify-center h-64 my-auto">
           <img
-            className="rounded-xl bg-muted size-72 aspect-square"
+            className="rounded-xl bg-muted size-72 aspect-square object-cover"
             src={getThumbnailUrl(event)}
             alt={name}
           />

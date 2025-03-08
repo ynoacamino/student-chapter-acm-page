@@ -12,11 +12,3 @@ declare global {
     }
   }
 }
-
-export interface Photo {
-  name: string,
-  category: number,
-  src: string,
-  width: number,
-  height: number
-}

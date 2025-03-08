@@ -1,18 +1,19 @@
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { ImagesCategories } from '@/types/images';
 
 export default function Categories({
   category,
   categories,
   setCategory,
 }: {
-  categories: { name: string, id: number }[];
-  setCategory: (categoryId: number) => void;
-  category: number;
+  categories: ImagesCategories[];
+  setCategory: (category: ImagesCategories) => void;
+  category: ImagesCategories;
 }) {
-  const handleCategory = (id: number) => {
+  const handleCategory = (id: ImagesCategories) => {
     if (category === id) {
-      setCategory(0);
+      setCategory(ImagesCategories.ALL);
     } else {
       setCategory(id);
     }
@@ -20,17 +21,17 @@ export default function Categories({
 
   return (
     <div className="flex gap-2 mb-8">
-      {categories.map(({ name, id }) => (
+      {categories.map((currentCategory) => (
         <Button
-          key={id}
-          onClick={() => handleCategory(id)}
+          key={currentCategory}
+          onClick={() => handleCategory(currentCategory)}
           type="button"
           variant="ghost"
           className={cn('px-4 py-3', {
-            'bg-primary text-background hover:bg-primary/90 hover:text-primary-foreground': category === id,
+            'bg-primary text-background hover:bg-primary/90 hover:text-primary-foreground': category === currentCategory,
           })}
         >
-          {name}
+          {currentCategory}
         </Button>
       ))}
     </div>

@@ -44,10 +44,10 @@ func init() {
 			"system": false,
 			"type": "select",
 			"values": [
-				"committee",
-				"virtual_event",
-				"in_person_event",
-				"achievements"
+				"Comités",
+				"Eventos virtuales",
+				"Eventos presenciales",
+				"Logros"
 			]
 		}`)); err != nil {
 			return err
