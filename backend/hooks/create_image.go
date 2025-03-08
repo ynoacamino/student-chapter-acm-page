@@ -36,14 +36,13 @@ const (
 	IMAGE_FRACTION_9_16 float64 = 9.0 / 16.0
 )
 
-func resizeImage(img image.Image, ratio string, maxWidth int, app *pocketbase.PocketBase) image.Image {
+func resizeImage(img image.Image, ratio string, maxWidth int) image.Image {
 	originalWidth := img.Bounds().Dx()
 	originalHeight := img.Bounds().Dy()
 
 	var cutImage image.Image
 
 	if ratio == IMAGE_RATIO_1_1 {
-		app.Logger().Debug("Entra a:", "ratio", ratio)
 		if originalWidth > originalHeight {
 			cutImage = imaging.CropAnchor(img, originalHeight, originalHeight, imaging.Center)
 		} else {
@@ -52,51 +51,44 @@ func resizeImage(img image.Image, ratio string, maxWidth int, app *pocketbase.Po
 	}
 
 	if ratio == IMAGE_RATIO_4_3 {
-		app.Logger().Debug("Entra a:", "ratio", ratio)
-		if originalWidth > originalHeight {
-			newWidth := int(float64(originalHeight) * IMAGE_FRACTION_4_3)
-			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
-		} else {
+		newWidth := int(float64(originalHeight) * IMAGE_FRACTION_4_3)
+		if newWidth > originalWidth {
 			newHeight := int(float64(originalWidth) / IMAGE_FRACTION_4_3)
 			cutImage = imaging.CropAnchor(img, originalWidth, newHeight, imaging.Center)
+		} else {
+			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
 		}
 	}
 
 	if ratio == IMAGE_RATIO_3_4 {
-		app.Logger().Debug("Entra a:", "ratio", ratio)
-		if originalWidth > originalHeight {
-			newWidth := int(float64(originalHeight) * IMAGE_FRACTION_3_4)
-			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
-		} else {
+		newWidth := int(float64(originalHeight) * IMAGE_FRACTION_3_4)
+		if newWidth > originalWidth {
 			newHeight := int(float64(originalWidth) / IMAGE_FRACTION_3_4)
 			cutImage = imaging.CropAnchor(img, originalWidth, newHeight, imaging.Center)
+		} else {
+			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
 		}
 	}
 
 	if ratio == IMAGE_RATIO_16_9 {
-		app.Logger().Debug("Entra a:", "ratio", ratio)
-		if originalWidth > originalHeight {
-			newWidth := int(float64(originalHeight) * IMAGE_FRACTION_16_9)
-			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
-		} else {
+		newWidth := int(float64(originalHeight) * IMAGE_FRACTION_16_9)
+		if newWidth > originalWidth {
 			newHeight := int(float64(originalWidth) / IMAGE_FRACTION_16_9)
 			cutImage = imaging.CropAnchor(img, originalWidth, newHeight, imaging.Center)
+		} else {
+			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
 		}
 	}
 
 	if ratio == IMAGE_RATIO_9_16 {
-		app.Logger().Debug("Entra a:", "ratio", ratio)
-		if originalWidth > originalHeight {
-			newWidth := int(float64(originalHeight) * IMAGE_FRACTION_9_16)
-			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
-		} else {
+		newWidth := int(float64(originalHeight) * IMAGE_FRACTION_9_16)
+		if newWidth > originalWidth {
 			newHeight := int(float64(originalWidth) / IMAGE_FRACTION_9_16)
 			cutImage = imaging.CropAnchor(img, originalWidth, newHeight, imaging.Center)
+		} else {
+			cutImage = imaging.CropAnchor(img, newWidth, originalHeight, imaging.Center)
 		}
 	}
-
-	app.Logger().Debug("Entra a:",
-		"ratio", ratio, "newWidth", cutImage.Bounds().Dx(), "newHeight", cutImage.Bounds().Dy())
 
 	if maxWidth == NO_RESIZE {
 		return cutImage
@@ -185,9 +177,9 @@ func CreateImage(app *pocketbase.PocketBase) {
 			e.Record.Set("ratio", ratio)
 		}
 
-		cutOriginalImg := resizeImage(originalImg, ratio, NO_RESIZE, app)
+		cutOriginalImg := resizeImage(originalImg, ratio, NO_RESIZE)
 
-		cutResizedImg := resizeImage(originalImg, ratio, MAX_THUMBNAIL_IMAGE_WIDTH, app)
+		cutResizedImg := resizeImage(originalImg, ratio, MAX_THUMBNAIL_IMAGE_WIDTH)
 
 		imageOriginalWebPFile, err := encodeWebP(cutOriginalImg, 85)
 		if err != nil {
