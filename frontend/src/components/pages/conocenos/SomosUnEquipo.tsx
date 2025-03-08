@@ -2,84 +2,51 @@
 
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import useMeasure from 'react-use-measure';
-import { animate, motion, useMotionValue } from 'motion/react';
-import { useEffect, useState } from 'react';
 import { ConocenosSections } from '@/config/pages';
+import { ImageCarousel, ImagesFields } from '@/types/images';
+import { getThumbnailUrl } from '@/lib/utils';
+import { motion } from 'motion/react';
+import { useMediaQuery } from 'react-responsive';
 
-let PHOTOS = Array
-  .from({ length: 5 })
-  .map((_, i) => ({
-    id: i * 13,
-    img: '/comites/mock.png',
-  }));
+export default function SomosUnEquipo({ photos }: { photos: ImageCarousel[] }) {
+  const isMobile = useMediaQuery({ query: '(max-width: 640px)' });
 
-PHOTOS = PHOTOS
-  .concat(PHOTOS)
-  .map((p, i) => ({ ...p, id: i >= PHOTOS.length ? i * 13 : p.id }));
-
-export default function SomosUnEquipo() {
-  const [containerRef, { width }] = useMeasure();
-  const xTranslation = useMotionValue(0);
-  const [mustFinish, setMustFinish] = useState(false);
-  const [rerender, setRerender] = useState(false);
-  const [onHover, setOnHover] = useState(false);
-
-  useEffect(() => {
-    const finalPosition = -width / 2 - 8;
-    if (onHover) {
-      return () => {};
-    }
-    let controls = animate(xTranslation, [0, finalPosition], {
-      ease: 'linear',
-      duration: 20,
-      repeat: Infinity,
-      repeatType: 'loop',
-      repeatDelay: 0,
-    });
-    // Se 'corta' la animación, entonces inicia la animación que permite
-    // terminarla
-    if (mustFinish) {
-      controls = animate(xTranslation, [xTranslation.get(), finalPosition], {
-        ease: 'linear',
-        duration: 20 * (1 - xTranslation.get() / finalPosition),
-        onComplete() {
-          setMustFinish(false);
-          setRerender((val) => !val);
-        },
-      });
-    }
-    return controls.stop;
-  }, [xTranslation, width, mustFinish, rerender, onHover]);
+  const MARGIN_R = isMobile ? 30 : 40;
+  const WIDTH_IMAGE = isMobile ? 280 : 400;
+  const DURATION = isMobile ? 1.9 : 2.9;
+  const TOTAL_IMAGES = photos.length / 2;
 
   return (
-    <Section className="w-full max-w-none px-0 gap-10 z-30" suppressHydrationWarning id={ConocenosSections.SOMOS_UN_EQUIPO_ID}>
+    <Section className="w-full max-w-none px-0 gap-6 z-30" id={ConocenosSections.SOMOS_UN_EQUIPO_ID}>
       <Title as="h2">
         Somos Un Equipo
       </Title>
       <div className="overflow-x-hidden w-full">
         <motion.div
-          ref={containerRef}
-          className="flex h-72 md:h-[30rem] justify-start items-center gap-4 w-max"
-          style={{ x: xTranslation }}
+          className="flex h-72 sm:h-[30rem] w-full justify-start items-center"
+          animate={{
+            x: (WIDTH_IMAGE + MARGIN_R) * TOTAL_IMAGES * -1,
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: DURATION * TOTAL_IMAGES,
+            ease: 'linear',
+          }}
         >
           {
-            [...PHOTOS, ...PHOTOS].map(({ id, img }, index) => (
+            photos.map((image) => (
               <motion.img
-                key={index < PHOTOS.length ? id : id + PHOTOS.length}
-                src={img}
-                alt="mock"
-                className="rounded-xl max-h-24 md:max-h-36"
+                key={image.uuid}
+                src={getThumbnailUrl(image)}
+                alt={image[ImagesFields.DESCRIPTION]}
+                className="w-[280px] md:w-[400px] rounded-lg mr-[30px] sm:mr-[40px]"
+                initial={{
+                  scale: 1,
+                  rotate: image.rotate,
+                }}
                 whileHover={{
                   scale: 1.1,
-                }}
-                onHoverStart={() => {
-                  setMustFinish(true);
-                  setOnHover(true);
-                }}
-                onHoverEnd={() => {
-                  setMustFinish(true);
-                  setOnHover(false);
+                  rotate: 0,
                 }}
               />
             ))
