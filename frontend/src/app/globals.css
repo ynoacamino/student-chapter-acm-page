@@ -86,6 +86,22 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+.aspect-ratio-1-1 {
+  aspect-ratio: 1 / 1;
+}
+.aspect-ratio-3-4 {
+  aspect-ratio: 3 / 4;
+}
+.aspect-ratio-16-9 {
+  aspect-ratio: 16 / 9;
+}
+.aspect-ratio-4-3 {
+  aspect-ratio: 4 / 3;
+}
+.aspect-ratio-9-16 {
+  aspect-ratio: 9 / 16;
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

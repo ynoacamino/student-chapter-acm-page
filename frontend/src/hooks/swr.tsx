@@ -65,3 +65,26 @@ export const useUpcomingEventsByCommittee = ({ committeeId }: { committeeId:stri
     mutate,
   };
 };
+
+export const usePhotos = () => {
+  const {
+    data,
+    isLoading,
+    error,
+  } = useSWR(
+    QuerySWRKeys.UPCOMING_EVENTS_BY_COMMITTEE,
+    () => api.getFullImages(),
+  );
+
+  if (error) {
+    return {
+      allPhotos: [],
+      isDataLoading: false,
+    };
+  }
+
+  return {
+    allPhotos: data,
+    isDataLoading: isLoading,
+  };
+};

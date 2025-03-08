@@ -27,7 +27,11 @@ export default function QuienesSomos() {
               sometimes on purpose (injected humour and the like).
             </p>
           </div>
-          <div className="rounded-xl bg-muted w-full max-w-96 aspect-square" />
+          <img
+            className="rounded-xl bg-muted w-full max-w-96 aspect-square object-cover"
+            src="https://acm-panel.ynoacamino.site/api/files/pbc_3607937828/r3bda8075k1162j/34015f23_7b64_48b5_8d15_a9b24406f655_btyqghae2h.webp"
+            alt="acm"
+          />
         </div>
       </div>
     </Section>

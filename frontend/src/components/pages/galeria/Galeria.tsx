@@ -10,7 +10,7 @@ const GALLERY_ID = 'main-gallery';
 
 export default function Galeria() {
   const {
-    photos, categories, setCategory, category, isLoading,
+    gallery, categories, setCategory, category, isLoading,
   } = useGallery({ id: GALLERY_ID });
 
   return (
@@ -20,7 +20,7 @@ export default function Galeria() {
         isLoading ? (
           <PhotosSkeleton />
         ) : (
-          <Photos photos={photos} />
+          <Photos gallery={gallery} />
         )
       }
     </Section>

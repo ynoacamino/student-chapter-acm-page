@@ -8,7 +8,7 @@ import { Speaker } from '@/types/speakers';
 import { Event } from '@/types/events';
 import { RecordModel } from 'pocketbase';
 import { BACKEND_URL } from '@/config/variables';
-import { ImagesFields } from '@/types/images';
+import { Image, ImagesFields } from '@/types/images';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -22,14 +22,24 @@ function isMemberOrSpeaker(record: RecordModel): record is Member | Speaker {
   return 'photo' in record;
 }
 
-export function getImageUrl(record: Committee | Member | Section | Speaker | Event) {
+function isImage(record: RecordModel): record is Image {
+  return 'ratio' in record;
+}
+
+export function getImageUrl(record: Committee | Member | Section | Speaker | Event | Image) {
   let originalImage = '';
   let thumbnailImage = '';
 
   let imageCollectionId = '';
   let imageId = '';
 
-  if (isMemberOrSpeaker(record)) {
+  if (isImage(record)) {
+    originalImage = record[ImagesFields.ORIGINAL];
+    thumbnailImage = record[ImagesFields.THUMBNAIL];
+
+    imageCollectionId = record.collectionId;
+    imageId = record.id;
+  } else if (isMemberOrSpeaker(record)) {
     originalImage = record.expand.photo[ImagesFields.ORIGINAL];
     thumbnailImage = record.expand.photo[ImagesFields.THUMBNAIL];
 
@@ -52,10 +62,10 @@ export function getImageUrl(record: Committee | Member | Section | Speaker | Eve
   };
 }
 
-export function getThumbnailUrl(record: Committee | Member | Section | Speaker | Event) {
+export function getThumbnailUrl(record: Committee | Member | Section | Speaker | Event | Image) {
   return getImageUrl(record).thumbnailUrl;
 }
 
-export function getOriginalUrl(record: Committee | Member | Section | Speaker | Event) {
+export function getOriginalUrl(record: Committee | Member | Section | Speaker | Event | Image) {
   return getImageUrl(record).originalUrl;
 }

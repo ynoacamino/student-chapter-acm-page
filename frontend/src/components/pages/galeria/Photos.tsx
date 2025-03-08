@@ -1,9 +1,10 @@
-import { Photo } from '@/types/gallery';
+import { cn, getOriginalUrl, getThumbnailUrl } from '@/lib/utils';
+import { Image, ImagesFields, ImagesRatio } from '@/types/images';
 
 export default function Photos({
-  photos,
+  gallery,
 }: {
-  photos: Photo[];
+  gallery: Image[];
 }) {
   return (
     <div className="w-full">
@@ -12,20 +13,26 @@ export default function Photos({
         maxcolwidth="600"
         className="lg:mx-auto mx-4"
       >
-        {photos.map((photo) => (
+        {gallery.map((image) => (
           <a
-            href={photo.src}
-            data-pswp-width={photo.width}
-            data-pswp-height={photo.height}
+            href={getThumbnailUrl(image)}
+            data-pswp-width={image[ImagesFields.ORIGINAL_WIDTH]}
+            data-pswp-height={image[ImagesFields.ORIGINAL_HEIGHT]}
             key={crypto.randomUUID()}
             target="_blank"
             rel="noreferrer"
-            className="hover:brightness-80 transition-transform duration-200 ease-in-out mb-5"
+            className={cn('hover:brightness-80 transition-transform duration-200 ease-in-out mb-5', {
+              'aspect-ratio-1-1': image[ImagesFields.RATIO] === ImagesRatio.RATIO_1_1,
+              'aspect-ratio-4-3': image[ImagesFields.RATIO] === ImagesRatio.RATIO_4_3,
+              'aspect-ratio-3-4': image[ImagesFields.RATIO] === ImagesRatio.RATIO_3_4,
+              'aspect-ratio-16-9': image[ImagesFields.RATIO] === ImagesRatio.RATIO_16_9,
+              'aspect-ratio-9-16': image[ImagesFields.RATIO] === ImagesRatio.RATIO_9_16,
+            })}
           >
-            <span className="sr-only">{photo.name }</span>
+            <span className="sr-only">{image[ImagesFields.DESCRIPTION] }</span>
             <img
-              src={photo.src}
-              className="w-full h-auto rounded-md bg-web-gray-100"
+              src={getOriginalUrl(image)}
+              className="w-full h-auto rounded-md bg-primary/10"
               alt=""
             />
           </a>

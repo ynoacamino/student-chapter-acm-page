@@ -1,6 +1,7 @@
 import { RecordModel } from 'pocketbase';
 import { Image } from './images';
 import { Committee } from './committees';
+import { SocialNetwork } from './social_networks';
 
 export enum ROLES {
   MEMBER = 'member',
@@ -18,6 +19,7 @@ export enum MembersFields {
 
   PHOTO = 'photo',
   COMMITTEE = 'committee',
+  SOCIAL_NETWORKS = 'social_networks',
 }
 
 export interface Member extends RecordModel {
@@ -27,9 +29,11 @@ export interface Member extends RecordModel {
 
   [MembersFields.PHOTO]: string;
   [MembersFields.COMMITTEE]: string;
+  [MembersFields.SOCIAL_NETWORKS]: string;
 
   expand: {
     [MembersFields.PHOTO]: Image;
     [MembersFields.COMMITTEE]: Committee;
+    [MembersFields.SOCIAL_NETWORKS]: SocialNetwork;
   };
 }
