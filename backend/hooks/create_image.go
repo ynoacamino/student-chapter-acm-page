@@ -178,8 +178,6 @@ func CreateImage(app *pocketbase.PocketBase) {
 
 		imgWidth := originalImg.Bounds().Dx()
 		imgHeight := originalImg.Bounds().Dy()
-		e.Record.Set("original_width", imgWidth)
-		e.Record.Set("original_height", imgHeight)
 
 		ratio := e.Record.GetString("ratio")
 		if ratio == "" {
@@ -199,6 +197,9 @@ func CreateImage(app *pocketbase.PocketBase) {
 		if err != nil {
 			return err
 		}
+
+		e.Record.Set("original_width", cutOriginalImg.Bounds().Dx())
+		e.Record.Set("original_height", cutOriginalImg.Bounds().Dy())
 
 		e.Record.Set("original", imageOriginalWebPFile)
 		e.Record.Set("thumbnail", imageResizedWebPFile)
