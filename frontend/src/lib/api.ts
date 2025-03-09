@@ -18,7 +18,7 @@ export class PocketBaseAPI {
 
   async getMembers() {
     const result = await this.pb.collection(Collections.MEMBERS).getFullList({
-      expand: 'image',
+      expand: 'photo',
     });
 
     return result as Member[];
@@ -68,7 +68,7 @@ export class PocketBaseAPI {
   async getMemberByCommittee({ committeeId }: { committeeId: string }) {
     const result = await this.pb.collection(Collections.MEMBERS).getFullList({
       filter: `committee="${committeeId}"`,
-      expand: 'image',
+      expand: 'photo,social_networks',
     });
 
     return result as Member[];

@@ -15,7 +15,7 @@ export default function Photos({
       >
         {gallery.map((image) => (
           <a
-            href={getThumbnailUrl(image)}
+            href={getOriginalUrl(image)}
             data-pswp-width={image[ImagesFields.ORIGINAL_WIDTH]}
             data-pswp-height={image[ImagesFields.ORIGINAL_HEIGHT]}
             key={crypto.randomUUID()}
@@ -31,7 +31,7 @@ export default function Photos({
           >
             <span className="sr-only">{image[ImagesFields.DESCRIPTION] }</span>
             <img
-              src={getOriginalUrl(image)}
+              src={getThumbnailUrl(image)}
               className="w-full h-auto rounded-md bg-primary/10"
               alt=""
             />

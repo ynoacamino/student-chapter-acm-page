@@ -55,15 +55,13 @@ export default function Sections() {
   return (
     <>
       {
-        DATA_SECTIONS.map((section, index) => (
+        DATA_SECTIONS.map((section) => (
           <SectionAnimationScroll
             key={section.title}
             id={section.id}
             title={section.title}
             content={section.content}
             image={section.image}
-            initial={index === 0}
-            last={index === DATA_SECTIONS.length - 1}
           />
         ))
       }

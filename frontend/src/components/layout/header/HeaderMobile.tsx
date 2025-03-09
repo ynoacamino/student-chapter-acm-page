@@ -51,12 +51,12 @@ export default function HeaderMobile({ path }: { path: string }) {
       <SheetContent className="py-2 flex md:hidden">
         <ScrollArea className="h-[95vh]">
           <SheetHeader>
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col gap-4 mb-5">
               <SheetTitle className="flex flex-col text-3xl font-bold">
                 <span>
                   Capitulo
                 </span>
-                <span className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-x-3">
+                <span className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-x-3 gap-y-2">
                   <span>
                     Estudiantil
                   </span>
@@ -65,9 +65,6 @@ export default function HeaderMobile({ path }: { path: string }) {
                   </span>
                 </span>
               </SheetTitle>
-              <h2 className="font-normal">
-                Universidad Nacional de San Agustin de Arequipa
-              </h2>
             </div>
           </SheetHeader>
           <nav className="flex flex-col justify-center gap-6 px-4 font-medium text-primary/80">
@@ -83,7 +80,7 @@ export default function HeaderMobile({ path }: { path: string }) {
                 >
                   {pagina.name}
                 </LinkMobile>
-                <div className="flex flex-col pl-7 py-2">
+                <div className="flex flex-col pl-5 py-2">
                   {
                 pagina.sections && pagina.sections.map((section) => (
                   <LinkMobile

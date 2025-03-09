@@ -3,7 +3,7 @@ import { Image } from './images';
 import { Committee } from './committees';
 import { SocialNetwork } from './social_networks';
 
-export enum ROLES {
+export enum MembersRoles {
   MEMBER = 'member',
   VOLUNTEER = 'volunteer',
   PRESIDENT = 'president',
@@ -11,6 +11,15 @@ export enum ROLES {
   TREASURER = 'treasurer',
   SECRETARY = 'secretary',
 }
+
+export const Roles = {
+  [MembersRoles.MEMBER]: 'Miembro',
+  [MembersRoles.VOLUNTEER]: 'Voluntario',
+  [MembersRoles.PRESIDENT]: 'Presidente',
+  [MembersRoles.VICE_PRESIDENT]: 'Vicepresidente',
+  [MembersRoles.TREASURER]: 'Tesorero',
+  [MembersRoles.SECRETARY]: 'Secreatario',
+};
 
 export enum MembersFields {
   NAME = 'name',
@@ -25,7 +34,7 @@ export enum MembersFields {
 export interface Member extends RecordModel {
   [MembersFields.NAME]: string;
   [MembersFields.LAST_NAME]: string;
-  [MembersFields.ROLE]: ROLES;
+  [MembersFields.ROLE]: MembersRoles;
 
   [MembersFields.PHOTO]: string;
   [MembersFields.COMMITTEE]: string;
@@ -34,6 +43,6 @@ export interface Member extends RecordModel {
   expand: {
     [MembersFields.PHOTO]: Image;
     [MembersFields.COMMITTEE]: Committee;
-    [MembersFields.SOCIAL_NETWORKS]: SocialNetwork;
+    [MembersFields.SOCIAL_NETWORKS]?: SocialNetwork;
   };
 }
