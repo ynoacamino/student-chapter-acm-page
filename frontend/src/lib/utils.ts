@@ -53,8 +53,8 @@ export function getImageUrl(record: Committee | Member | Section | Speaker | Eve
     imageId = record.expand.image.id;
   }
 
-  const thumbnailUrl = `${BACKEND_URL}/api/files/${imageCollectionId}/${imageId}/${originalImage}`;
-  const originalUrl = `${BACKEND_URL}/api/files/${imageCollectionId}/${imageId}/${thumbnailImage}`;
+  const thumbnailUrl = `${BACKEND_URL}/api/files/${imageCollectionId}/${imageId}/${thumbnailImage}`;
+  const originalUrl = `${BACKEND_URL}/api/files/${imageCollectionId}/${imageId}/${originalImage}`;
 
   return {
     thumbnailUrl,
