@@ -45,7 +45,7 @@ export default function HeaderMobile({ path }: { path: string }) {
     <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
       <SheetTrigger asChild className="flex md:hidden">
         <Button variant="ghost" size="icon" className="size-10">
-          <Menu className="size-6" />
+          <Menu className="size-8" />
         </Button>
       </SheetTrigger>
       <SheetContent className="py-2 flex md:hidden">
