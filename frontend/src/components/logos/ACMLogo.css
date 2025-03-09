@@ -1,13 +1,8 @@
-svg.ACMLogo {
-  width: 400px;
-  height: 400px;
-}
-
 .ACMLogo path {
   fill: none;
   stroke-width: 2;
-  stroke-dasharray: 500; /* Longitud estimada del trazo */
-  stroke-dashoffset: 500; /* Oculto al inicio */
+  stroke-dasharray: 800; /* Longitud estimada del trazo */
+  stroke-dashoffset: 800; /* Oculto al inicio */
   animation: draw 6s ease forwards;
 }
 
