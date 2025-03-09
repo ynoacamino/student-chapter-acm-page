@@ -1,19 +1,19 @@
 import { getThumbnailUrl } from '@/lib/utils';
-import { Member } from '@/types/members';
-// import { Github, Instagram, Linkedin } from 'lucide-react';
-import Image from 'next/image';
-// import Link from 'next/link';
+import { Member, Roles } from '@/types/members';
+import { Github, Instagram, Linkedin } from 'lucide-react';
+import Link from 'next/link';
 
 export default function MemberCard(member: Member) {
-  const { name, last_name, role } = member;
-
-  // const links = undefined;
+  const {
+    name, last_name, role, expand,
+  } = member;
+  const { social_networks } = expand;
 
   return (
     <article className="flex flex-col gap-3 max-w-72 justify-center items-center min-h-54">
       {
         getThumbnailUrl(member) ? (
-          <Image src={getThumbnailUrl(member)} alt={name} width={0} height={0} className="h-full flex-1" />
+          <img src={getThumbnailUrl(member)} alt={name} className="rounded-full w-full max-w-36 md:max-w-56 aspect-square flex items-center justify-center" />
         ) : (
           <div className="grow bg-muted aspect-square rounded-full" />
         )
@@ -22,28 +22,28 @@ export default function MemberCard(member: Member) {
         {`${name} ${last_name}`}
       </h4>
       {
-        role && <h5 className="text-muted-foreground">{role}</h5>
+        role && <h5 className="text-muted-foreground font-medium">{Roles[role]}</h5>
       }
-      {/* {
-        links && (
+      {
+        social_networks && (
           <div className="flex gap-2 text-muted-foreground">
             {
-              links.github && (
-              <Link href={links.github}>
+              social_networks.github && (
+              <Link href={social_networks.github}>
                 <Github className="hover:text-secondary-foreground" />
               </Link>
               )
             }
             {
-              links.instagram && (
-              <Link href={links.instagram}>
+              social_networks.instagram && (
+              <Link href={social_networks.instagram}>
                 <Instagram className="hover:text-secondary-foreground" />
               </Link>
               )
             }
             {
-              links.linkedin && (
-              <Link href={links.linkedin}>
+              social_networks.linkedin && (
+              <Link href={social_networks.linkedin}>
                 <Linkedin className="hover:text-secondary-foreground" />
               </Link>
               )
@@ -51,7 +51,7 @@ export default function MemberCard(member: Member) {
 
           </div>
         )
-      } */}
+      }
     </article>
   );
 }
