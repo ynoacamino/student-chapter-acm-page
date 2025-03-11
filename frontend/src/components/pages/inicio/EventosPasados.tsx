@@ -7,6 +7,7 @@ import { usePastEvents } from '@/hooks/swr';
 import EventosPasadosItemSkeleton from '@/components/ui/EventosPasadosItemSkeleton';
 import EventosPasadosItem from '@/components/ui/EventosPasadosItem';
 import { InicioSections } from '@/config/pages';
+import SinEventos from '../comites/comite/SinEventos';
 
 const EventosPasadosSkeleton = Array
   .from({ length: 10 })
@@ -14,22 +15,28 @@ const EventosPasadosSkeleton = Array
 
 export default function EventosPasados() {
   const { isLoading, pastEvents } = usePastEvents();
-
   return (
     <Section id={InicioSections.EVENTOS_PASADOS_ID}>
       <Title as="h2">
         Eventos Pasados
       </Title>
       <div className="mx-auto container px-3 mt-10">
-        <AutoCarousel>
-          {
-            isLoading || !pastEvents ? (
-              EventosPasadosSkeleton
-            ) : pastEvents.map((event) => (
-              <EventosPasadosItem {...event} key={event.id} />
-            ))
-          }
-        </AutoCarousel>
+        {
+          isLoading || (pastEvents && pastEvents.length > 0)
+            ? (
+              <AutoCarousel>
+                {
+                  isLoading
+                    ? EventosPasadosSkeleton
+                    : pastEvents?.map((event) => (
+                      <EventosPasadosItem {...event} key={event.id} />
+                    ))
+                }
+              </AutoCarousel>
+            )
+            : <SinEventos type="pasado" />
+        }
+
       </div>
     </Section>
   );
