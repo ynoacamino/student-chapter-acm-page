@@ -7,6 +7,7 @@ import { useUpcomingEventsByCommittee } from '@/hooks/swr';
 import { ComitesSections } from '@/config/pages';
 import ProximosEventosItemSkeleton from './ProximosEventosItemSkeleton';
 import ProximosEventosItem from './ProximosEventosItem';
+import SinEventos from './SinEventos';
 
 const ProximosEventosSkeleton = Array
   .from({ length: 10 })
@@ -23,15 +24,22 @@ export default function ProximosEventos({ committeeId }: { committeeId: string }
         Proximos Eventos
       </Title>
       <div className="mx-auto container px-3 mt-10">
-        <AutoCarousel>
-          {
-            isLoading || !upcomingEventsByCommittee
-              ? ProximosEventosSkeleton
-              : upcomingEventsByCommittee.map((event) => (
-                <ProximosEventosItem key={event.id} {...event} />
-              ))
-          }
-        </AutoCarousel>
+        {
+          isLoading || (upcomingEventsByCommittee && upcomingEventsByCommittee.length > 0)
+            ? (
+              <AutoCarousel>
+                {
+                  isLoading
+                    ? ProximosEventosSkeleton
+                    : upcomingEventsByCommittee?.map((event) => (
+                      <ProximosEventosItem key={event.id} {...event} />
+                    ))
+                }
+              </AutoCarousel>
+            )
+            : <SinEventos type="proximo" />
+        }
+
       </div>
     </Section>
   );
