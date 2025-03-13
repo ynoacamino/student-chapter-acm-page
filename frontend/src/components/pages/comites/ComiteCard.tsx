@@ -7,7 +7,7 @@ import Link from 'next/link';
 export default function ComiteCard(committee: Committee) {
   const { name, excerpt } = committee;
   return (
-    <div className="group p-0.5 rounded-xl relative overflow-hidden h-full">
+    <div className="group p-0.5 rounded-xl relative overflow-hidden h-full text-[17px]">
       <div className="absolute top-0 left-0 size-full scale-0 bg-primary/50 group-hover:scale-140 transition-transform duration-[350ms] origin-top-left rounded-br-full ease-in-out" />
       <div className="absolute top-0 left-0 size-full bg-muted -z-10" />
       <Link

@@ -10,6 +10,8 @@ import { RecordModel } from 'pocketbase';
 import { BACKEND_URL } from '@/config/variables';
 import { Image, ImagesFields } from '@/types/images';
 
+const DEFAULT_PHOTO_URL = 'https://ynoa-uploader.ynoacamino.site/uploads/1741887040_New%20Project.webp';
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
@@ -40,6 +42,13 @@ export function getImageUrl(record: Committee | Member | Section | Speaker | Eve
     imageCollectionId = record.collectionId;
     imageId = record.id;
   } else if (isMemberOrSpeaker(record)) {
+    if (!record.expand.photo) {
+      return {
+        thumbnailUrl: DEFAULT_PHOTO_URL,
+        originalUrl: DEFAULT_PHOTO_URL,
+      };
+    }
+
     originalImage = record.expand.photo[ImagesFields.ORIGINAL];
     thumbnailImage = record.expand.photo[ImagesFields.THUMBNAIL];
 

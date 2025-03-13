@@ -12,7 +12,7 @@ export default function EventosPasadosItem(event: Event) {
           <p className="text-2xl font-semibold text-gray-900 text-center">
             {name}
           </p>
-          <p className="text-sm text-gray-600 px-2 text-center">{excerpt}</p>
+          <p className="md:text-base text-gray-600 px-2 text-center">{excerpt}</p>
         </div>
         <div className="flex items-center justify-end">
           <img

@@ -19,7 +19,7 @@ export default async function BentoComittees() {
   const comittees = await api.getCommittees();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 grid-rows-[repeat(auto-fit,1fr)] gap-5">
+    <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 grid-rows-[repeat(auto-fit,1fr)] gap-5 md:text-[17px]">
       {
         comittees.map(({ id, name, excerpt }, index) => (
           <Comite
