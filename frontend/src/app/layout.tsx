@@ -29,7 +29,7 @@ export default function RootLayout({
       >
         <ProgressBarProvider>
           <Header />
-          <main className="flex flex-col items-center w-full">
+          <main className="flex flex-col items-center w-full md:text-lg">
             {children}
           </main>
           <Footer />
