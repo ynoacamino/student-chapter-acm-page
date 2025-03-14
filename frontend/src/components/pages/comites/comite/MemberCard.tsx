@@ -27,21 +27,21 @@ export default function MemberCard(member: Member) {
           <div className="flex gap-2 text-muted-foreground">
             {
               social_networks.github && (
-              <Link href={social_networks.github}>
+              <Link href={social_networks.github} target="_blank">
                 <Github className="hover:text-secondary-foreground" />
               </Link>
               )
             }
             {
               social_networks.instagram && (
-              <Link href={social_networks.instagram}>
+              <Link href={social_networks.instagram} target="_blank">
                 <Instagram className="hover:text-secondary-foreground" />
               </Link>
               )
             }
             {
               social_networks.linkedin && (
-              <Link href={social_networks.linkedin}>
+              <Link href={social_networks.linkedin} target="_blank">
                 <Linkedin className="hover:text-secondary-foreground" />
               </Link>
               )
