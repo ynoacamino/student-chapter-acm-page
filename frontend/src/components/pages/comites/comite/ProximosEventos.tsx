@@ -2,7 +2,7 @@
 
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import { AutoCarousel } from '@/components/ui/autoCarousel';
+import { AutoCarousel, AutoCarouselItem } from '@/components/ui/autoCarousel';
 import { useUpcomingEventsByCommittee } from '@/hooks/swr';
 import { ComitesSections } from '@/config/pages';
 import ProximosEventosItemSkeleton from './ProximosEventosItemSkeleton';
@@ -32,7 +32,9 @@ export default function ProximosEventos({ committeeId }: { committeeId: string }
                   isLoading
                     ? ProximosEventosSkeleton
                     : upcomingEventsByCommittee?.map((event) => (
-                      <ProximosEventosItem key={event.id} {...event} />
+                      <AutoCarouselItem key={event.id}>
+                        <ProximosEventosItem {...event} />
+                      </AutoCarouselItem>
                     ))
                 }
               </AutoCarousel>

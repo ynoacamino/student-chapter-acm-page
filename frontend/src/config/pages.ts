@@ -24,6 +24,7 @@ export interface PageConfig {
 export enum InicioSections {
   QUIENES_SOMOS_ID = 'inicio-quienes-somos',
   NUESTROS_COMITES_ID = 'inicio-comites',
+  EVENTOS_MUY_PROXIMOS_ID = 'inicio-eventos-muy-proximos',
   EVENTOS_PASADOS_ID = 'inicio-eventos-pasados',
   MANTENTE_ACTUALIZADO_ID = 'inicio-mantente-actualizado',
 }
@@ -64,6 +65,10 @@ const pagesConfigInit = async (): Promise<PageConfig> => {
             {
               name: 'Nuestros Comites',
               id: InicioSections.NUESTROS_COMITES_ID,
+            },
+            {
+              name: 'Eventos Muy Proximos',
+              id: InicioSections.EVENTOS_MUY_PROXIMOS_ID,
             },
             {
               name: 'Eventos Pasados',

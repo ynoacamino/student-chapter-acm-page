@@ -2,7 +2,7 @@
 
 import Section from '@/components/ui/Section';
 import Title from '@/components/ui/Title';
-import { AutoCarousel } from '@/components/ui/autoCarousel';
+import { AutoCarousel, AutoCarouselItem } from '@/components/ui/autoCarousel';
 import EventosPasadosItemSkeleton from '@/components/ui/EventosPasadosItemSkeleton';
 import EventosPasadosItem from '@/components/ui/EventosPasadosItem';
 import { usePastEventsByCommittee } from '@/hooks/swr';
@@ -30,7 +30,9 @@ export default function EventosPasados({ committeeId }: { committeeId: string })
                   isLoading
                     ? EventosPasadosSkeleton
                     : pastEventsByCommittee?.map((event) => (
-                      <EventosPasadosItem {...event} key={event.id} />
+                      <AutoCarouselItem key={event.id}>
+                        <EventosPasadosItem {...event} />
+                      </AutoCarouselItem>
                     ))
                 }
               </AutoCarousel>
