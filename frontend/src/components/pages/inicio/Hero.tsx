@@ -6,12 +6,12 @@ export default function Hero() {
     <Section
       className="flex flex-col-reverse md:flex-row justify-between mt-16 md:mt-32 items-center md:pr-0 gap-y-16"
     >
-      <div className="flex flex-col gap-4">
-        <h1 className="flex flex-col text-6xl lg:text-7xl font-bold">
+      <div className="flex flex-col gap-5">
+        <h1 className="flex flex-col gap-y-4 items-center lg:items-start text-6xl lg:text-7xl font-bold">
           <span>
             Capitulo
           </span>
-          <span className="flex flex-col lg:flex-row justify-start items-start lg:items-center gap-x-3">
+          <span className="flex flex-col lg:flex-row justify-start items-center lg:items-start gap-x-3 gap-y-4">
             <span>
               Estudiantil
             </span>

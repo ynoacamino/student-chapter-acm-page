@@ -42,17 +42,19 @@ export class PocketBaseAPI {
   }
 
   async getUpcomingEvents() {
-    const result = await this.pb.collection(Collections.EVENTS).getList(1, 10, {
+    const result = await this.pb.collection(Collections.EVENTS).getFullList({
       filter: 'date >= @now',
       sort: 'date',
-      expand: 'image',
+      expand: 'image,committee',
     });
 
-    return result.items as Event[];
+    return result as Event[];
   }
 
   async getFullImages() {
-    const result = await this.pb.collection(Collections.IMAGES).getFullList();
+    const result = await this.pb.collection(Collections.IMAGES).getFullList({
+      filter: 'category != "Foto"',
+    });
 
     return result as Image[];
   }

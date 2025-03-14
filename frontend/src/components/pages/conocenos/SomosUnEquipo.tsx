@@ -13,7 +13,7 @@ export default function SomosUnEquipo({ photos }: { photos: ImageCarousel[] }) {
 
   const MARGIN_R = isMobile ? 30 : 40;
   const WIDTH_IMAGE = isMobile ? 280 : 400;
-  const DURATION = isMobile ? 1.9 : 2.9;
+  const DURATION = isMobile ? 3.5 : 2.9;
   const TOTAL_IMAGES = photos.length / 2;
 
   return (

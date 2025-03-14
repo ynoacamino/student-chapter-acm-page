@@ -1,3 +1,4 @@
+import EventosMuyProximos from '@/components/pages/inicio/EventosMuyProximos';
 import EventosPasados from '@/components/pages/inicio/EventosPasados';
 import Hero from '@/components/pages/inicio/Hero';
 import MantenteInformado from '@/components/pages/inicio/MantenteInformado';
@@ -10,6 +11,7 @@ export default async function Home() {
       <Hero />
       <QuienesSomos />
       <NuestrosComites />
+      <EventosMuyProximos />
       <EventosPasados />
       <MantenteInformado />
     </>

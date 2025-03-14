@@ -41,7 +41,7 @@ export interface Member extends RecordModel {
   [MembersFields.SOCIAL_NETWORKS]: string;
 
   expand: {
-    [MembersFields.PHOTO]: Image;
+    [MembersFields.PHOTO]?: Image;
     [MembersFields.COMMITTEE]: Committee;
     [MembersFields.SOCIAL_NETWORKS]?: SocialNetwork;
   };
