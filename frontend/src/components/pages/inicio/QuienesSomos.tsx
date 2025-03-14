@@ -9,9 +9,9 @@ export default function QuienesSomos() {
         Quienes Somos
       </Title>
       <div className="flex flex-col gap-8">
-        <div className="flex flex-col md:flex-row gap-12 w-full">
+        <div className="flex flex-col md:flex-row gap-12 w-full items-center">
           <div className="flex flex-col gap-6 w-full py-6 text-lg">
-            <h3 className="text-2xl font-semibold">
+            <h3 className="text-2xl md:text-3xl font-semibold">
               Impulsando la innovación y el aprendizaje en tecnología
             </h3>
             <p>

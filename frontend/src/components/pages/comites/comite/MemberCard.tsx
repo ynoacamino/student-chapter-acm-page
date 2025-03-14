@@ -10,15 +10,13 @@ export default function MemberCard(member: Member) {
   const { social_networks } = expand;
 
   return (
-    <article className="flex flex-col gap-3 max-w-72 justify-center items-center min-h-54">
-      {
-        getThumbnailUrl(member) ? (
-          <img src={getThumbnailUrl(member)} alt={name} className="rounded-full w-full max-w-36 md:max-w-56 aspect-square flex items-center justify-center" />
-        ) : (
-          <div className="grow bg-muted aspect-square rounded-full" />
-        )
-      }
-      <h4 className="font-semibold text-2xl">
+    <article className="flex flex-col gap-3 max-w-36 md:max-w-48 justify-start items-center min-h-54">
+      <img
+        src={getThumbnailUrl(member)}
+        alt={name}
+        className="rounded-full w-full aspect-square flex items-center justify-center"
+      />
+      <h4 className="font-semibold text-xl text-center mt-1">
         {`${name} ${last_name}`}
       </h4>
       {

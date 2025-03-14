@@ -20,6 +20,10 @@ export function slugify(text: string) {
   return slugifyLib(text, { lower: true });
 }
 
+export function capitalize(text: string) {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
 function isMemberOrSpeaker(record: RecordModel): record is Member | Speaker {
   return 'photo' in record;
 }
