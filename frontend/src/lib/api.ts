@@ -54,6 +54,7 @@ export class PocketBaseAPI {
   async getFullImages() {
     const result = await this.pb.collection(Collections.IMAGES).getFullList({
       filter: 'category != "Foto"',
+      sort: '-created',
     });
 
     return result as Image[];

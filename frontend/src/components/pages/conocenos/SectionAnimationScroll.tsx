@@ -19,7 +19,7 @@ export default function SectionAnimationScroll(
         <img
           src={image}
           alt={title}
-          className="w-full max-w-xs md:max-w-lg justify-self-center"
+          className={cn('w-full max-w-xs md:max-w-lg justify-self-center aspect-ratio-4-3 bg-primary/30 rounded-xl')}
         />
         <div
           className="flex flex-col justify-center items-center w-full md:max-w-xl gap-6"
