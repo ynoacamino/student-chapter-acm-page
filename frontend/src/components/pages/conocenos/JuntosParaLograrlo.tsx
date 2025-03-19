@@ -3,10 +3,12 @@ import Title from '@/components/ui/Title';
 import { ConocenosSections } from '@/config/pages';
 import api from '@/lib/api';
 import { getThumbnailUrl } from '@/lib/utils';
+import { MembersFields, MembersRoles } from '@/types/members';
 
 export default async function JuntosParaLograrlo() {
   const members = (await api.getMembers())
-    .sort(() => Math.random() - 0.5);
+    .sort((prev) => (prev?.expand.photo ? -1 : 1))
+    .sort((prev) => (prev[MembersFields.ROLE] !== MembersRoles.MEMBER ? -1 : 1));
 
   return (
     <Section className="gap-16 z-30" id={ConocenosSections.JUNTOS_PARA_LOGRARLO_ID}>
