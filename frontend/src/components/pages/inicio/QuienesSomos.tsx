@@ -30,7 +30,7 @@ export default function QuienesSomos() {
           </div>
           <img
             className="rounded-xl bg-muted w-full max-w-80 aspect-square object-cover"
-            src="https://ynoa-uploader.ynoacamino.site/uploads/1741466514_71c09d6c_e9e4_49af_842a_0d0448c048d6_3wic7497xn.webp"
+            src="https://acm-panel.ynoacamino.site/api/files/pbc_3607937828/1ns53v8z5l896fz/2ca40cf0_3dd6_4d92_8f56_81a93b6fb403_7rczya8m6c.webp?token="
             alt="acm"
           />
         </div>

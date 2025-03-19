@@ -18,7 +18,7 @@ export default function ProximosEventosItem(event: Event) {
         {name}
       </h3>
       <p>
-        {excerpt.length >= 74 ? `${excerpt.slice(0, 72)}...` : excerpt}
+        {excerpt?.length >= 74 ? `${excerpt.slice(0, 72)}...` : excerpt}
       </p>
     </div>
   );
