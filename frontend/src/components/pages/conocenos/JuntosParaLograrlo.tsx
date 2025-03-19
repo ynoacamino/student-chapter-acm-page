@@ -5,7 +5,8 @@ import api from '@/lib/api';
 import { getThumbnailUrl } from '@/lib/utils';
 
 export default async function JuntosParaLograrlo() {
-  const members = await api.getMembers();
+  const members = (await api.getMembers())
+    .sort(() => Math.random() - 0.5);
 
   return (
     <Section className="gap-16 z-30" id={ConocenosSections.JUNTOS_PARA_LOGRARLO_ID}>
