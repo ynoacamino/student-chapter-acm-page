@@ -22,23 +22,25 @@ export default function EventosPasados() {
       </Title>
       <div className="mx-auto container px-3 mt-10">
         {
-          isLoading || (pastEvents && pastEvents.length > 0)
+          isLoading || !pastEvents
             ? (
               <AutoCarousel>
+                {EventosPasadosSkeleton}
+              </AutoCarousel>
+            ) : pastEvents.length === 0 ? (
+              <SinEventos type="pasado" />
+            ) : (
+              <AutoCarousel>
                 {
-                  isLoading
-                    ? EventosPasadosSkeleton
-                    : pastEvents?.map((event) => (
-                      <AutoCarouselItem key={event.id}>
-                        <EventosPasadosItem {...event} />
-                      </AutoCarouselItem>
-                    ))
+                  pastEvents?.map((event) => (
+                    <AutoCarouselItem key={event.id}>
+                      <EventosPasadosItem {...event} />
+                    </AutoCarouselItem>
+                  ))
                 }
               </AutoCarousel>
             )
-            : <SinEventos type="pasado" />
         }
-
       </div>
     </Section>
   );

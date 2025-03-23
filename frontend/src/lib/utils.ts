@@ -11,6 +11,7 @@ import { BACKEND_URL } from '@/config/variables';
 import { Image, ImagesFields } from '@/types/images';
 
 const DEFAULT_PHOTO_URL = 'https://ynoa-uploader.ynoacamino.site/uploads/1741887040_New%20Project.webp';
+const DEFAULT_IMAGE_URL = 'https://ynoa-uploader.ynoacamino.site/uploads/1742746921_New%20Project%20%281%29.webp';
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -59,6 +60,13 @@ export function getImageUrl(record: Committee | Member | Section | Speaker | Eve
     imageCollectionId = record.expand.photo.collectionId;
     imageId = record.expand.photo.id;
   } else {
+    if (!record.expand.image) {
+      return {
+        thumbnailUrl: DEFAULT_IMAGE_URL,
+        originalUrl: DEFAULT_IMAGE_URL,
+      };
+    }
+
     originalImage = record.expand.image[ImagesFields.ORIGINAL];
     thumbnailImage = record.expand.image[ImagesFields.THUMBNAIL];
 

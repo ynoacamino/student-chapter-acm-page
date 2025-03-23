@@ -4,6 +4,8 @@ import { Event } from '@/types/events';
 export default function EventosPasadosItem(event: Event) {
   const { name, excerpt } = event;
 
+  console.log(event);
+
   return (
     <div className="flex flex-col items-center px-4 py-5 gap-y-6 sm:p-6 h-full justify-between">
       <div className="flex flex-col gap-2 overflow-y-hidden">
