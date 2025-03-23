@@ -21,6 +21,7 @@ export default function EventosPasados() {
         Eventos Pasados
       </Title>
       <div className="mx-auto container px-3 mt-10">
+        {/* eslint-disable no-nested-ternary */}
         {
           isLoading || !pastEvents
             ? (
